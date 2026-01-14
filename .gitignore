@@ -1,0 +1,43 @@
+# --- Regimo Orchestrator (EDO) GitIgnore ---
+
+# 1. Environment & Secrets
+# NEVER commit your actual .env file containing KIT API tokens
+.env
+.env.local
+.env.*.local
+
+# 2. Python / Java Core (regimo-core dependencies)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+target/
+*.jar
+*.war
+
+# 3. Docker & Infrastructure
+# Ignore local data persistence for Kafka and Zookeeper
+docker/data/
+*.log
+.docker/
+
+# 4. Research Data & Temporary Files
+# Large data exports or temporary RDF serialisations
+data/
+*.tmp
+*.bak
+*.swp
+
+# 5. IDE Specifics
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# 6. Submodule Management
+# Note: We do NOT ignore the submodule folders themselves.
+# We only ignore potential build artifacts inside them if necessary.
+# However, it is better to manage those within each submodule's own .gitignore.
