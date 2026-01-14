@@ -7,3 +7,6 @@
 [submodule "core"]
 	path = core
 	url = git@github.com:EnergyDataOrchestrator/regimo-core.git
+[submodule "infrastructure"]
+	path = infrastructure
+	url = git@github.com:EnergyDataOrchestrator/regimo-infrastructure.git
