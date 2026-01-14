@@ -4,3 +4,9 @@
 [submodule "components/socket-rdmo"]
 	path = components/socket-rdmo
 	url = git@github.com:EnergyDataOrchestrator/socket-rdmo.git
+[submodule "infrastructure"]
+	path = infrastructure
+	url = git@github.com:EnergyDataOrchestrator/regimo-infrastructure.git
+[submodule "core"]
+	path = core
+	url = git@github.com:EnergyDataOrchestrator/regimo-core.git
