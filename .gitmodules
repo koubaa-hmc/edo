@@ -15,4 +15,4 @@
 	url = https://github.com/GhassenMr07/StageHMC.git
 [submodule "frontend"]
 	path = frontend
-	url = git@github.com:koubaa-hmc/frontend.git
+	url = git@github.com:GhassenMr07/StageHMC.git
