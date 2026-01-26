@@ -10,3 +10,6 @@
 [submodule "infrastructure"]
 	path = infrastructure
 	url = git@github.com:EnergyDataOrchestrator/regimo-infrastructure.git
+[submodule "StageHMC"]
+	path = StageHMC
+	url = https://github.com/GhassenMr07/StageHMC.git
