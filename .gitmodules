@@ -13,3 +13,6 @@
 [submodule "StageHMC"]
 	path = StageHMC
 	url = https://github.com/GhassenMr07/StageHMC.git
+[submodule "frontend/vue-frontend"]
+	path = frontend/vue-frontend
+	url = git@github.com:EnergyDataOrchestrator/vue-frontend.git
