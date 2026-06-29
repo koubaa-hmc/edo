@@ -1,9 +1,10 @@
 [project]
 name = "edo"
 version = "0.1.0"
-description = "Add your description here"
+description = "Energy Data Orchestrator"
 requires-python = ">=3.12"
 dependencies = [
     "linkml>=1.11.1",
+    "quantulum3[classifier]>=0.10.0",
     "schema-automator>=0.5.5",
 ]
