@@ -1,5 +1,6 @@
 # edo
-An Ontology-Aware Energy Data Orchestrator. A microservice-based framework for intelligent energy system integration via Kafka. Developed at Karlsruhe Institute of Technology (KIT).
+An Ontology-Aware Energy Data Orchestrator. A microservice-based framework for intelligent energy system integration
+via Kafka. Developed at Karlsruhe Institute of Technology (KIT).
 
 The Repository has a Service-Oriented Structure. This approach ensures that ontology definitions, infrastructure 
 (Kafka), and functional microservices remain decoupled yet easy to orchestrate.
@@ -9,20 +10,23 @@ Since the components are "ontology aware", the semantic models must be the "sing
 
 - `regimo-ontology`: Contains the OWL/TTL files, schema definitions, and generated class libraries (e.g., linkml 
 models, Python Pydantic models or Java POJOs) used by the sockets.
-- `regimo-common-lib`: Shared logic for Kafka producer/consumer patterns and common socket interfaces to ensure consistency across the orchestrator.
+- `regimo-common-lib`: Shared logic for Kafka producer/consumer patterns and common socket interfaces to ensure
+consistency across the orchestrator.
 
 ## 2. Microservice Repositories (The Sockets)
 Instead of a single massive repository (monorepo), use individual repositories for each microservice to allow 
 independent scaling and deployment cycles.
 
 - `socket-[service-name]`: e.g., `socket-rdmo`, `socket-orkg`.
-- `socket-template`: A boilerplate 
-  repository containing the Kafka bus connection logic and ontology parsing. This allows KIT researchers to quickly spin up new components.
+- `socket-template`: A boilerplate repository containing the Kafka bus connection logic and ontology parsing.
+This allows KIT researchers to quickly spin up new components.
 
 ## 3. Infrastructure & Orchestration
-regimo-deploy: Contains Docker Compose files, Kubernetes manifests, or Helm charts. This repository defines how the Kafka bus and the sockets are wired together in a production or research environment.
+regimo-deploy: Contains Docker Compose files, Kubernetes manifests, or Helm charts. This repository defines
+how the Kafka bus and the sockets are wired together in a production or research environment.
 
-regimo-docs: Centralised documentation using GitHub Pages (MkDocs or Sphinx), detailing the architectural flow of the energy data.
+regimo-docs: Centralised documentation using GitHub Pages (MkDocs or Sphinx), detailing the architectural flow
+of the energy data.
 
 ## Repository Naming Convention
 The Regimo ecosystem is organised into functional categories to maintain modularity and ease of orchestration.
@@ -35,14 +39,16 @@ The Regimo ecosystem is organised into functional categories to maintain modular
 | **Ops** | `regimo-infrastructure` | Kafka configurations, Zookeeper/KRaft setups, and CI/CD pipelines. |
 
 ## Managing the Kafka Bus Integration
-Since Kafka acts as the backbone, using GitHub Packages to host a private or public "Regimo-Bus-Adapter" library. This library should be included as a dependency in every socket repository to handle:
+Since Kafka acts as the backbone, using GitHub Packages to host a private or public "Regimo-Bus-Adapter" library.
+This library should be included as a dependency in every socket repository to handle:
 
 - Standardised message headers for ontology metadata.
 - Automatic serialisation/deserialisation based on your KITopen-documented schemas.
 
 ## Essential Commands for the Development Team
 
-When cloning the main **edo** repository, specific flags must be used to ensure the submodules (ontology and sockets) are correctly populated rather than remaining as empty directories.
+When cloning the main **edo** repository, specific flags must be used to ensure the submodules (ontology and sockets)
+are correctly populated rather than remaining as empty directories.
 
 ### 1. Initial Setup
 To clone the entire orchestrator ecosystem, including all microservices and the ontology:
@@ -51,7 +57,8 @@ git clone --recurse-submodules git@github.com:koubaa-hmc/edo.git
 ```
 
 ### 2. Updating Components
-Because the `edo` repository only stores a "pointer" to a specific commit in each submodule, you must manually pull updates when a colleague modifies a component like `regimo-ontology`.
+Because the `edo` repository only stores a "pointer" to a specific commit in each submodule, you must manually
+pull updates when a colleague modifies a component like `regimo-ontology`.
 
 To pull the latest changes for all sockets and the ontology into your local orchestrator environment, run:
 
@@ -61,7 +68,9 @@ git submodule update --remote --merge
 
 ### 3. Development Workflow (Inside a Submodule)
 
-If you are modifying a component (such as the ontology or a specific socket) while working within the `edo` repository, you must commit your changes twice: once within the component itself and once in the parent repository to update the "pointer".
+If you are modifying a component (such as the ontology or a specific socket) while working within the `edo`
+repository, you must commit your changes twice: once within the component itself and once in the parent repository
+to update the "pointer".
 
 Follow this sequence:
 
