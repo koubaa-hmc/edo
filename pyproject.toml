@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Energy Data Orchestrator"
 requires-python = ">=3.12"
 dependencies = [
+    "ipykernel>=7.3.0",
     "linkml>=1.11.1",
+    "linkml-map>=0.5.2",
     "quantulum3[classifier]>=0.10.0",
     "schema-automator>=0.5.5",
 ]
