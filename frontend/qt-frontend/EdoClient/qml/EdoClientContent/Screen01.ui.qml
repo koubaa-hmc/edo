@@ -1,9 +1,8 @@
-
-
 /*
  * Screen01 - Main Content Area
  *
  * UI component for EdoClient main screen with navigation and data display.
+ * Pure UI file - NO logic, NO signals, NO handlers. Editable in Qt Design Studio.
  */
 import QtQuick
 import QtQuick.Controls 2.15
@@ -14,23 +13,19 @@ Rectangle {
     id: mainScreen
 
     color: EdoClient.Constants.lightGray
-
-    // Signals for Python integration
-    signal dataLoaded(var data)
-    signal actionTriggered(string actionId, var params)
-    signal statusMessage(string message)
-    signal roleSelected(string roleId)
     
-
-
-
-
-    // Properties for external control
-    property var externalData: null
-    property bool triggerNewWorkspace: false
-
-    // Navigation state
-    property int currentNavIndex: 0
+    // ========== EXPOSED REFERENCES (Qt Design Studio compatible) ==========
+    // These aliases allow the wrapper to access internal items
+    property alias navStack: navStack
+    property alias navDatasets: navDatasets
+    property alias navTimeseries: navTimeseries
+    property alias navRdf: navRdf
+    property alias navSettings: navSettings
+    property alias importBtn: importBtn
+    property alias roleGuest: roleGuest
+    property alias roleFellow: roleFellow
+    property alias roleSteward: roleSteward
+    property alias roleAdmin: roleAdmin
 
     // Top navigation bar
     Rectangle {
@@ -64,11 +59,6 @@ Rectangle {
                 display: AbstractButton.TextBesideIcon
                 Layout.preferredHeight: 35
                 icon.source: "images/layers.svg"
-                
-                onClicked: {
-                    currentNavIndex = 0
-                    mainScreen.actionTriggered("nav.datasets", {})
-                }
             }
 
             Button {
@@ -90,11 +80,6 @@ Rectangle {
                 display: AbstractButton.TextBesideIcon
                 Layout.preferredHeight: 35
                 icon.source: "images/folder-clock.svg"
-                
-                onClicked: {
-                    currentNavIndex = 1
-                    mainScreen.actionTriggered("nav.timeseries", {})
-                }
             }
 
             Button {
@@ -116,11 +101,6 @@ Rectangle {
                 display: AbstractButton.TextBesideIcon
                 Layout.preferredHeight: 35
                 icon.source: "images/share-2.svg"
-                
-                onClicked: {
-                    currentNavIndex = 2
-                    mainScreen.actionTriggered("nav.rdf", {})
-                }
             }
 
             Button {
@@ -142,11 +122,6 @@ Rectangle {
                 display: AbstractButton.TextBesideIcon
                 Layout.preferredHeight: 35
                 icon.source: "images/settings.svg"
-                
-                onClicked: {
-                    currentNavIndex = 3
-                    mainScreen.actionTriggered("nav.settings", {})
-                }
             }
 
             Item {
@@ -174,8 +149,6 @@ Rectangle {
                 Layout.preferredHeight: 35
                 icon.source: "images/download.svg"
                 visible: true
-                
-                onClicked: mainScreen.actionTriggered("data.import", {})
             }
         }
     }
@@ -183,13 +156,13 @@ Rectangle {
     // Stack for different views
     StackLayout {
         id: navStack
-        currentIndex: currentNavIndex
         anchors.top: navBar.bottom
         anchors.bottom: parent.bottom
         width: parent.width
 
         // Page 1: Datasets
         Rectangle {
+            id: pageDatasets
             color: EdoClient.Constants.lightGray
 
             ColumnLayout {
@@ -226,6 +199,7 @@ Rectangle {
 
         // Page 2: Timeseries
         Rectangle {
+            id: pageTimeseries
             color: EdoClient.Constants.lightGray
 
             ColumnLayout {
@@ -262,6 +236,7 @@ Rectangle {
 
         // Page 3: RDF
         Rectangle {
+            id: pageRdf
             color: EdoClient.Constants.lightGray
 
             ColumnLayout {
@@ -298,6 +273,7 @@ Rectangle {
 
         // Page 4: Settings
         Rectangle {
+            id: pageSettings
             color: EdoClient.Constants.lightGray
 
             ColumnLayout {
@@ -324,41 +300,21 @@ Rectangle {
                             id: roleGuest
                             text: "Guest Viewer"
                             checked: true
-                            property string roleValue: "guest_viewer"
-                            
-                            onToggled: {
-                                if (checked) mainScreen.roleSelected(roleGuest.roleValue)
-                            }
                         }
 
                         RadioButton {
                             id: roleFellow
                             text: "Research Fellow"
-                            property string roleValue: "research_fellow"
-                            
-                            onToggled: {
-                                if (checked) mainScreen.roleSelected(roleFellow.roleValue)
-                            }
                         }
 
                         RadioButton {
                             id: roleSteward
                             text: "Data Steward"
-                            property string roleValue: "data_steward"
-                            
-                            onToggled: {
-                                if (checked) mainScreen.roleSelected(roleSteward.roleValue)
-                            }
                         }
 
                         RadioButton {
                             id: roleAdmin
                             text: "Administrator"
-                            property string roleValue: "admin"
-                            
-                            onToggled: {
-                                if (checked) mainScreen.roleSelected(roleAdmin.roleValue)
-                            }
                         }
                     }
                 }

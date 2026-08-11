@@ -1,9 +1,9 @@
 /*
  * Screen01Wrapper - Logic layer for Screen01.ui.qml
  * 
- * This wrapper adds JavaScript functions that cannot be in .ui.qml files.
- * Place this file in the EdoClient folder alongside other logic components.
- * Use this component instead of Screen01.ui.qml directly in App.qml.
+ * This wrapper contains ALL business logic, signals, and properties.
+ * Uses Connections to hook into UI events via the mainScreen item's child scope.
+ * Use this in App.qml.
  */
 
 import QtQuick
@@ -15,75 +15,134 @@ Item {
     id: wrapper
     anchors.fill: parent
     
-    // Expose signals from mainScreen for App.qml to connect to
+    // ========== SIGNALS ==========
     signal dataLoaded(var data)
     signal actionTriggered(string actionId, var params)
     signal statusMessage(string message)
     signal roleSelected(string roleId)
     
-    // Current role tracking
+    // ========== PROPERTIES ==========
+    property var externalData: null
+    property bool triggerNewWorkspace: false
+    property int currentNavIndex: 0
     property string currentRole: "guest_viewer"
-    
-    // Content management
     property var currentData: null
     property bool contentVisible: false
     
+    // ========== UI COMPONENT ==========
     Screen01 {
         id: mainScreen
         anchors.fill: parent
         
-        // Public API functions (these cannot be in .ui.qml)
+        Component.onCompleted: {
+            console.log("Screen01Wrapper: Connecting button handlers...")
+            
+            // Connect navigation buttons
+            mainScreen.navDatasets.clicked.connect(wrapper.onNavDatasetsClicked)
+            mainScreen.navTimeseries.clicked.connect(wrapper.onNavTimeseriesClicked)
+            mainScreen.navRdf.clicked.connect(wrapper.onNavRdfClicked)
+            mainScreen.navSettings.clicked.connect(wrapper.onNavSettingsClicked)
+            mainScreen.importBtn.clicked.connect(wrapper.onImportClicked)
+            
+            // Connect radio buttons
+            mainScreen.roleGuest.toggled.connect(wrapper.onRoleToggled)
+            mainScreen.roleFellow.toggled.connect(wrapper.onRoleToggled)
+            mainScreen.roleSteward.toggled.connect(wrapper.onRoleToggled)
+            mainScreen.roleAdmin.toggled.connect(wrapper.onRoleToggled)
+            
+            console.log("Screen01Wrapper: All connections established")
+        }
+        
+        // ========== PUBLIC API FUNCTIONS ==========
         function displayData(data) {
-            currentData = data
-            contentVisible = true
-            dataLoaded(data)
+            console.log("Displaying data:", data)
+            wrapper.currentData = data
+            wrapper.contentVisible = true
+            wrapper.dataLoaded(data)
         }
         
         function clearData() {
-            currentData = null
-            contentVisible = false
+            console.log("Clearing data")
+            wrapper.currentData = null
+            wrapper.contentVisible = false
         }
         
         function newWorkspace() {
+            console.log("Creating new workspace")
             clearData()
-            statusMessage("New workspace created")
+            wrapper.statusMessage("New workspace created")
         }
-        
-        // Handle external data changes
-        onExternalDataChanged: {
-            if (externalData !== null) {
-                displayData(externalData)
-            }
+    }
+    
+    // ========== NAVIGATION HANDLERS ==========
+    function onNavDatasetsClicked() {
+        console.log("Navigation: Datasets clicked")
+        currentNavIndex = 0
+        actionTriggered("nav.datasets", {})
+    }
+    
+    function onNavTimeseriesClicked() {
+        console.log("Navigation: Timeseries clicked")
+        currentNavIndex = 1
+        actionTriggered("nav.timeseries", {})
+    }
+    
+    function onNavRdfClicked() {
+        console.log("Navigation: RDF Graph clicked")
+        currentNavIndex = 2
+        actionTriggered("nav.rdf", {})
+    }
+    
+    function onNavSettingsClicked() {
+        console.log("Navigation: Settings clicked")
+        currentNavIndex = 3
+        actionTriggered("nav.settings", {})
+    }
+    
+    function onImportClicked() {
+        console.log("Action: Import clicked")
+        actionTriggered("data.import", {})
+    }
+    
+    // ========== ROLE HANDLER ==========
+    function onRoleToggled() {
+        if (mainScreen.roleGuest.checked) {
+            console.log("Role selected: guest_viewer")
+            currentRole = "guest_viewer"
+            roleSelected("guest_viewer")
+        } else if (mainScreen.roleFellow.checked) {
+            console.log("Role selected: research_fellow")
+            currentRole = "research_fellow"
+            roleSelected("research_fellow")
+        } else if (mainScreen.roleSteward.checked) {
+            console.log("Role selected: data_steward")
+            currentRole = "data_steward"
+            roleSelected("data_steward")
+        } else if (mainScreen.roleAdmin.checked) {
+            console.log("Role selected: admin")
+            currentRole = "admin"
+            roleSelected("admin")
         }
-        
-        // Handle new workspace trigger
-        onTriggerNewWorkspaceChanged: {
-            if (triggerNewWorkspace) {
-                newWorkspace()
-                triggerNewWorkspace = false
-            }
+    }
+    
+    // ========== PROPERTY WATCHERS ==========
+    onExternalDataChanged: {
+        if (externalData !== null) {
+            console.log("External data changed, displaying...")
+            mainScreen.displayData(externalData)
         }
-        
-        // Sync button checked states with currentNavIndex
-        onCurrentNavIndexChanged: function(index) {
-            if (mainScreen.navDatasets) mainScreen.navDatasets.checked = (index === 0)
-            if (mainScreen.navTimeseries) mainScreen.navTimeseries.checked = (index === 1)
-            if (mainScreen.navRdf) mainScreen.navRdf.checked = (index === 2)
-            if (mainScreen.navSettings) mainScreen.navSettings.checked = (index === 3)
+    }
+    
+    onTriggerNewWorkspaceChanged: {
+        if (triggerNewWorkspace) {
+            console.log("Trigger new workspace detected")
+            mainScreen.newWorkspace()
+            triggerNewWorkspace = false
         }
-        
-        // Forward signals to wrapper
-        onDataLoaded: function(data) {
-            wrapper.dataLoaded(data)
-        }
-        onActionTriggered: function(actionId, params) {
-            wrapper.actionTriggered(actionId, params)
-        }
-        onStatusMessage: function(message) {
-            wrapper.statusMessage(message)
-        }
-        onRoleSelected: function(roleId) {
-            wrapper.roleSelected(roleId)
-        }
+    }
+    
+    onCurrentNavIndexChanged: {
+        console.log("Nav index changed to:", currentNavIndex)
+        mainScreen.navStack.currentIndex = currentNavIndex
     }
 }
