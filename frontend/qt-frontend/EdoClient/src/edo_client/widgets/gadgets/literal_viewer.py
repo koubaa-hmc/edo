@@ -1,38 +1,37 @@
 """Literal Viewer Widget - Displays simple data types (strings, numbers, etc.)."""
 
 from __future__ import annotations
-from typing import Any, Optional
-from PyQt6.QtWidgets import (
-    QWidget, QVBoxLayout, QTextEdit, QLabel, QGroupBox, QHBoxLayout
-)
-from PyQt6.QtCore import Qt
+
 import json
+from typing import Any
+
+from PyQt6.QtWidgets import QGroupBox, QLabel, QTextEdit, QVBoxLayout, QWidget
 
 
 class LiteralViewer(QWidget):
     """Widget for viewing literal/simple data values."""
-    
-    def __init__(self, data: Any, parent: Optional[QWidget] = None) -> None:
+
+    def __init__(self, data: Any, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self._data = data
         self._setup_ui()
         self._load_data()
-    
+
     def _setup_ui(self) -> None:
         layout = QVBoxLayout(self)
         layout.setContentsMargins(10, 10, 10, 10)
         layout.setSpacing(10)
-        
+
         # Info label
         info_group = QGroupBox("Data Value")
         info_layout = QVBoxLayout(info_group)
-        
+
         self._type_label = QLabel("")
         self._type_label.setStyleSheet("font-weight: bold;")
         info_layout.addWidget(self._type_label)
-        
+
         layout.addWidget(info_group)
-        
+
         # Content display
         self._content = QTextEdit()
         self._content.setReadOnly(True)
@@ -47,12 +46,12 @@ class LiteralViewer(QWidget):
             }
         """)
         layout.addWidget(self._content)
-    
+
     def _load_data(self) -> None:
         """Load data into the viewer."""
         # Update type label
         self._type_label.setText(f"Type: {type(self._data).__name__}")
-        
+
         # Format content based on type
         if isinstance(self._data, (dict, list)):
             try:
