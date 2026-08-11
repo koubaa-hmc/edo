@@ -1,0 +1,8 @@
+<RCC>
+    <qresource>
+        <file>EdoClient.qmlproject</file>
+        <file>qml/EdoClient/qmldir</file>
+        <file>qml/qtquickcontrols2.conf</file>
+        <file>qtquickcontrols2.conf</file>
+    </qresource>
+</RCC>

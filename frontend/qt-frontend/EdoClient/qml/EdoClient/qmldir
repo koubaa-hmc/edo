@@ -1,0 +1,7 @@
+# EDO Client QML Module
+
+module EdoClient
+
+singleton Constants 1.0 Constants.qml
+
+# Additional components can be registered here

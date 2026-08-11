@@ -1,112 +1,191 @@
-# EDO Client - Qt Desktop Application
+# EDO Client - Energy Data Orchestrator Desktop Application
 
-Energy Data Orchestrator desktop client built with PyQt6.
+A unified PyQt6/QML desktop application with Qt Design Studio support for editing UI designs.
 
-## Features
-
-- **Role-based UI**: Dynamic interface based on user permissions (Guest Viewer, Research Fellow, Data Steward, Admin)
-- **Data-driven widgets**: Automatic widget selection based on data type
-  - Dataset Browser
-  - Table Viewer
-  - Timeseries Grid
-  - RDF Inspector
-  - Literal Viewer
-- **Async support**: Full asyncio integration via qasync
-- **Backend bridge**: Decoupled communication with backend services
-
-## Installation
-
-```bash
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate  # On macOS/Linux
-# or: .venv\Scripts\activate  # On Windows
-
-# Install dependencies
-pip install -e .
-```
-
-## Running the Application
-
-### Direct execution
-```bash
-python main.py
-```
-
-### As module
-```bash
-python -m edo_client
-```
-
-### With entry point (after install)
-```bash
-edo-client
-```
-
-## Testing the UI
-
-Use the included test script to verify the user interface:
-
-```bash
-# Run with demo data (default)
-python test_ui.py
-
-# Run without auto-loading demo data
-python test_ui.py --no-demo
-
-# Test specific roles
-python test_ui.py --role guest_viewer
-python test_ui.py --role research_fellow
-python test_ui.py --role data_steward
-python test_ui.py --role admin
-
-# Test specific data types
-python test_ui.py --test-dataset
-python test_ui.py --test-timeseries
-python test_ui.py --test-rdf
-
-# Interactive mode
-python test_ui.py --interactive
-```
-
-### Interactive Test Commands
-
-In interactive mode, use these commands:
-- `dataset` - Load demo dataset
-- `timeseries` - Load demo timeseries
-- `rdf` - Load demo RDF data
-- `clear` - Clear current display
-- `quit` - Exit application
-
-## Project Structure
+## 🎯 Project Structure
 
 ```
 EdoClient/
-├── src/edo_client/
-│   ├── __init__.py
-│   ├── __main__.py
-│   ├── app.py              # Application class
-│   ├── main.py             # Entry point
-│   ├── core/
-│   │   ├── role_registry.py    # Role & permission management
-│   │   ├── widget_factory.py   # Dynamic widget creation
-│   │   └── backend_bridge.py   # Backend communication
-│   └── widgets/
-│       ├── main_window.py          # Main application window
-│       ├── role_aware_container.py # Dynamic content container
-│       └── gadgets/
-│           ├── dataset_browser.py
-│           ├── table_viewer.py
-│           ├── timeseries_grid.py
-│           ├── literal_viewer.py
-│           ├── rdf_inspector.py
-│           └── fallback_viewer.py
-├── test_ui.py              # UI test script
-├── pyproject.toml
-└── README.md
+├── run.py                      # Unified launcher (pyqt|qml|test)
+├── main.py                     # Direct PyQt entry point
+├── test_ui.py                  # PyQt UI test script
+├── test_core.py                # Core logic tests
+├── CMakeLists.txt              # CMake build configuration
+│
+├── src/                        # Python source code
+│   └── edo_client/
+│       ├── app.py              # PyQt application class
+│       ├── qml_app.py          # QML application class
+│       ├── qml_bridge.py       # Python-QML bridge
+│       ├── main.py             # Entry point
+│       │
+│       ├── core/               # Core business logic
+│       │   ├── role_registry.py    # Role & permission system
+│       │   ├── widget_factory.py   # Dynamic widget creation
+│       │   └── backend_bridge.py   # Backend communication
+│       │
+│       └── widgets/            # PyQt widgets (programmatic UI)
+│           ├── main_window.py
+│           ├── role_aware_container.py
+│           └── gadgets/            # Data-specific viewers
+│               ├── dataset_browser.py
+│               ├── table_viewer.py
+│               ├── timeseries_grid.py
+│               ├── literal_viewer.py
+│               ├── rdf_inspector.py
+│               └── fallback_viewer.py
+│
+├── qml/                        # QML files (Qt Design Studio)
+│   ├── EdoClientContent/
+│   │   ├── App.qml                 # Main window
+│   │   ├── Screen01.ui.qml         # Main content (editable in QDS)
+│   │   └── ContentArea.qml         # Dynamic data display
+│   │
+│   └── EdoClient/
+│       ├── Constants.qml           # Shared constants
+│       └── qmldir                  # QML module definition
+│
+├── .idea/                      # PyCharm project configuration
+│   └── runConfigurations/      # Run/debug configurations
+│
+└── docs/                       # Documentation
 ```
 
-## Role Permissions
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+cd /Users/ot2661/Documents/01_dev/edo/frontend/qt-frontend/EdoClient
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Verify installation
+python -c "import PyQt6; print('PyQt6:', PyQt6.__version__)"
+```
+
+### Running the Application
+
+#### Option 1: Unified Launcher (Recommended)
+
+```bash
+# Run PyQt UI with demo data
+python run.py pyqt
+
+# Run QML UI (Qt Design Studio compatible)
+python run.py qml
+
+# Run without demo data
+python run.py pyqt --no-demo
+
+# Set specific role
+python run.py pyqt --role guest_viewer
+
+# Run tests
+python run.py test
+```
+
+#### Option 2: Direct Execution
+
+```bash
+# PyQt application
+python main.py
+
+# Or as module
+python -m edo_client
+
+# Test UI
+python test_ui.py
+
+# Core tests
+python test_core.py
+```
+
+#### Option 3: PyCharm
+
+Open the project in PyCharm and use the pre-configured run configurations:
+
+- **Run PyQt UI** - Runs `test_ui.py` with demo data
+- **Run QML App** - Runs QML-based interface
+- **Run Tests** - Executes `test_core.py`
+
+## 🎨 Working with Qt Design Studio
+
+### Editing UI Files
+
+The following QML files are designed to be edited in **Qt Design Studio**:
+
+| File | Description |
+|------|-------------|
+| `qml/EdoClientContent/Screen01.ui.qml` | Main content area (.ui.qml format) |
+| `qml/EdoClientContent/App.qml` | Application window |
+| `qml/EdoClientContent/ContentArea.qml` | Dynamic data display component |
+| `qml/EdoClient/Constants.qml` | Shared constants (singleton) |
+
+### Workflow
+
+1. **Edit in Qt Design Studio:**
+   - Open `EdoClient.qmlproject` in Qt Design Studio
+   - Edit `.ui.qml` files visually
+   - Save changes
+
+2. **Test in PyCharm:**
+   - Run `python run.py qml` to see QML UI
+   - Changes are reflected immediately
+
+3. **Integrate with Python:**
+   - QML signals connect to Python slots via `qml_bridge.py`
+   - Python data is exposed to QML through context properties
+
+### QML ↔ Python Integration
+
+```qml
+// In QML
+Button {
+    onClicked: pythonBridge.loadData({
+        "title": "My Dataset",
+        "resources": [...]
+    })
+}
+```
+
+```python
+# In Python
+from edo_client.qml_bridge import QMLBridge
+
+bridge = QMLBridge()
+bridge.dataLoaded.connect(qml_handler)
+bridge.triggerAction("data.import", {"path": "..."})
+```
+
+## 🧪 Testing
+
+### Core Logic Tests (No GUI Required)
+
+```bash
+python test_core.py
+```
+
+Tests:
+- ✅ Role registry and permissions
+- ✅ Widget factory data type detection
+- ✅ Backend bridge action execution
+- ✅ Demo data structures
+
+### UI Tests (Requires Display)
+
+```bash
+# PyQt UI
+python test_ui.py
+
+# Specific scenarios
+python test_ui.py --role data_steward
+python test_ui.py --test-dataset
+python test_ui.py --interactive
+```
+
+## 👥 Role-Based Access Control
 
 | Permission | Guest | Fellow | Steward | Admin |
 |------------|-------|--------|---------|-------|
@@ -120,18 +199,75 @@ EdoClient/
 | Ingestion HKG | | | ✓ | ✓ |
 | Workflow Status | | | ✓ | ✓ |
 | Manage Users | | | | ✓ |
-| Admin Access | | | | ✓ |
 
-## Environment Variables
+Set role via:
+- Environment: `EDO_ROLE=data_steward python run.py pyqt`
+- CLI: `python run.py pyqt --role research_fellow`
+- UI: Settings page (QML mode only)
 
-- `EDO_ROLE`: Override the default role for testing (e.g., `EDO_ROLE=guest_viewer`)
+## 🔧 Development
 
-## Logging
+### Project Configuration
 
-Logs are written to `~/.edo-client/logs/edo-client.log` with rotation (5 MB per file, 3 backups).
+- **Python**: 3.10+
+- **Qt**: PyQt6 6.5+
+- **Build**: CMake 3.16+ (for C++/QML builds)
+- **IDE**: PyCharm (configurations included)
 
-## Requirements
+### Build from Source (C++)
 
-- Python 3.10+
-- PyQt6 6.5+
-- qasync 0.27+ (optional, for asyncio event loop integration)
+```bash
+mkdir build && cd build
+cmake ..
+make
+./edoclient_bin
+```
+
+### Directory Layout
+
+```
+src/                    Python source (edit in PyCharm)
+qml/                    QML files (edit in Qt Design Studio)
+.idea/                  PyCharm configuration
+.venv/                  Virtual environment
+docs/                   Documentation
+```
+
+## 📝 Key Files
+
+| File | Purpose | Edit In |
+|------|---------|---------|
+| `run.py` | Unified launcher | PyCharm |
+| `src/edo_client/app.py` | PyQt application logic | PyCharm |
+| `src/edo_client/qml_app.py` | QML application logic | PyCharm |
+| `src/edo_client/qml_bridge.py` | Python-QML integration | PyCharm |
+| `qml/EdoClientContent/Screen01.ui.qml` | Main UI layout | Qt Design Studio |
+| `qml/EdoClientContent/App.qml` | Window definition | Both |
+| `CMakeLists.txt` | Build configuration | Text editor |
+
+## 🐛 Troubleshooting
+
+### "Application icon could not be loaded"
+Warning only - application runs normally. Add icon to `src/edo_client/resources/`.
+
+### QML Import Errors
+Ensure QML path is correct:
+```bash
+export QML_IMPORT_PATH=/path/to/EdoClient/qml
+```
+
+### PyQt6 Not Found
+Activate virtual environment:
+```bash
+source .venv/bin/activate
+```
+
+## 📚 Documentation
+
+- [PyQt6 Documentation](https://www.riverbankcomputing.com/static/Docs/PyQt6/)
+- [Qt Design Studio Manual](https://doc.qt.io/qt-design-studio/)
+- [QML Reference](https://doc.qt.io/qt-6/qml-reference.html)
+
+## 📄 License
+
+Energy Data Orchestrator Team © 2025

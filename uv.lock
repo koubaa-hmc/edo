@@ -713,6 +713,7 @@ name = "edo"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "graphviz" },
     { name = "ipykernel" },
     { name = "linkml" },
     { name = "linkml-map" },
@@ -722,6 +723,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "graphviz", specifier = ">=0.21" },
     { name = "ipykernel", specifier = ">=7.3.0" },
     { name = "linkml", specifier = ">=1.11.1" },
     { name = "linkml-map", specifier = ">=0.5.2" },
