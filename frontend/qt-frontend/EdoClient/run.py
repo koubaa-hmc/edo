@@ -10,7 +10,7 @@ in different modes:
 
 Usage:
     python run.py [mode] [options]
-    
+
 Examples:
     python run.py pyqt                    # Run PyQt UI with demo data
     python run.py pyqt --no-demo          # Run PyQt UI without demo
@@ -19,12 +19,12 @@ Examples:
     python run.py --help                  # Show help
 """
 
-import sys
-import os
 import argparse
+import sys
+from os import environ, path
 
 # Add src to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
+sys.path.insert(0, path.join(path.dirname(__file__), "src"))
 
 
 def parse_args():
@@ -48,7 +48,7 @@ Examples:
   %(prog)s test
         """
     )
-    
+
     parser.add_argument(
         "mode",
         nargs="?",
@@ -56,13 +56,13 @@ Examples:
         choices=["pyqt", "qml", "test"],
         help="Application mode (default: pyqt)"
     )
-    
+
     parser.add_argument(
         "--no-demo",
         action="store_true",
         help="Run without demo data auto-loading"
     )
-    
+
     parser.add_argument(
         "--role",
         type=str,
@@ -70,23 +70,30 @@ Examples:
         choices=["guest_viewer", "research_fellow", "data_steward", "admin"],
         help="Set user role"
     )
-    
+
     parser.add_argument(
         "--verbose", "-v",
         action="store_true",
         help="Enable verbose output"
     )
-    
+
     return parser.parse_args()
 
 
 def run_pyqt(args):
     """Run PyQt6-based UI."""
+    from PyQt6.QtWidgets import QApplication
+    from PyQt6.QtCore import Qt
     from edo_client.app import EDOApplication
-    
+
+    # Enable high DPI scaling (from legacy main.py)
+    QApplication.setHighDpiScaleFactorRoundingPolicy(
+        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
+    )
+
     if args.role:
-        os.environ["EDO_ROLE"] = args.role
-    
+        environ["EDO_ROLE"] = args.role
+
     app = EDOApplication(sys.argv, demo_mode=not args.no_demo)
     return app.run()
 
@@ -94,7 +101,7 @@ def run_pyqt(args):
 def run_qml(args):
     """Run QML-based UI."""
     from edo_client.qml_app import QMLApplication
-    
+
     app = QMLApplication(demo_mode=not args.no_demo)
     return app.run()
 
@@ -102,30 +109,30 @@ def run_qml(args):
 def run_tests(args):
     """Run test suite."""
     import subprocess
-    
+
     print("\n🧪 Running EDO Client Tests\n")
-    
+
     # Run core tests
     result = subprocess.run(
         [sys.executable, "test_core.py"],
-        cwd=os.path.dirname(__file__) or ".",
-        env={**os.environ, "PYTHONPATH": os.path.join(os.path.dirname(__file__) or ".", "src")}
+        cwd=path.dirname(__file__) or ".",
+        env={**environ, "PYTHONPATH": path.join(path.dirname(__file__) or ".", "src")}
     )
-    
+
     return result.returncode
 
 
 def main():
     """Main entry point."""
     args = parse_args()
-    
+
     if args.verbose:
         print(f"Mode: {args.mode}")
         print(f"Demo: {not args.no_demo}")
         if args.role:
             print(f"Role: {args.role}")
         print()
-    
+
     try:
         if args.mode == "pyqt":
             return run_pyqt(args)
@@ -136,7 +143,7 @@ def main():
         else:
             print(f"Unknown mode: {args.mode}")
             return 1
-            
+
     except KeyboardInterrupt:
         print("\n⚠️  Interrupted")
         return 0

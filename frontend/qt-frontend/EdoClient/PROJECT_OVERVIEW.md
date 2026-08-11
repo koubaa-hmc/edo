@@ -37,7 +37,7 @@ This document explains how the PyQt6 Python project and Qt Design Studio QML pro
 |--------------|--------------------------|
 | `src/edo_client/` | `EdoClient/` (QML) |
 | `test_ui.py` | `EdoClient.qmlproject` |
-| `main.py` | `EdoClientContent/*.qml` |
+| `run.py` (pyqt mode) | `EdoClientContent/*.qml` |
 
 ### After Merge
 
@@ -48,8 +48,7 @@ EdoClient/
 ├── src/                    ← Python source (from PyQt project)
 ├── qml/                    ← QML files (from Qt Design Studio)
 ├── .idea/                  ← PyCharm configuration (NEW)
-├── run.py                  ← Unified launcher (NEW)
-├── main.py                 ← Legacy entry point (kept for compatibility)
+├── run.py                  ← Unified launcher (single entry point)
 ├── test_ui.py              ← PyQt UI tests
 ├── test_core.py            ← Core logic tests
 └── CMakeLists.txt          ← Optional C++ build support

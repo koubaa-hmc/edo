@@ -35,7 +35,7 @@ Project {
 
     Files {
         filter: "*.conf"
-        files: ["qtquickcontrols2.conf"]
+        files: ["qml/qtquickcontrols2.conf"]
     }
 
     Files {
@@ -84,7 +84,7 @@ Project {
     }
 
     Environment {
-        QT_QUICK_CONTROLS_CONF: "qtquickcontrols2.conf"
+        QT_QUICK_CONTROLS_CONF: "qml/qtquickcontrols2.conf"
         QML_COMPAT_RESOLVE_URLS_ON_ASSIGNMENT: "1"
         QT_LOGGING_RULES: "qt.qml.connections=false"
         QT_ENABLE_HIGHDPI_SCALING: "0"

@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pyqt6>=6.5.0",
+    "pyqt6-sip>=13.12.0",
     "qasync>=0.27.0",
 ]
 

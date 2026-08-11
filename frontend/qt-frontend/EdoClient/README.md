@@ -6,8 +6,7 @@ A unified PyQt6/QML desktop application with Qt Design Studio support for editin
 
 ```
 EdoClient/
-├── run.py                      # Unified launcher (pyqt|qml|test)
-├── main.py                     # Direct PyQt entry point
+├── run.py                      # Unified launcher (pyqt|qml|test) - single entry point
 ├── test_ui.py                  # PyQt UI test script
 ├── test_core.py                # Core logic tests
 ├── CMakeLists.txt              # CMake build configuration
@@ -17,7 +16,7 @@ EdoClient/
 │       ├── app.py              # PyQt application class
 │       ├── qml_app.py          # QML application class
 │       ├── qml_bridge.py       # Python-QML bridge
-│       ├── main.py             # Entry point
+│       ├── __main__.py         # Module entry point (python -m edo_client)
 │       │
 │       ├── core/               # Core business logic
 │       │   ├── role_registry.py    # Role & permission system
@@ -86,13 +85,10 @@ python run.py pyqt --role guest_viewer
 python run.py test
 ```
 
-#### Option 2: Direct Execution
+#### Option 2: Module Execution
 
 ```bash
-# PyQt application
-python main.py
-
-# Or as module
+# Run as Python module (PyQt mode)
 python -m edo_client
 
 # Test UI
