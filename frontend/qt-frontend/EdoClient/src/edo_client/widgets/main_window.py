@@ -1,16 +1,18 @@
 """Main Window - Central container assembling dynamic components."""
 
 from __future__ import annotations
+
 import asyncio
 import os as _os
 from typing import Any
-from PyQt6.QtWidgets import QMainWindow, QWidget, QMenuBar, QStatusBar, QMessageBox, QInputDialog
-from PyQt6.QtCore import Qt, pyqtSignal, pyqtSlot, QTimer
-from PyQt6.QtGui import QAction
 
-from ..core.role_registry import RoleRegistry, RolePolicy, Permission, get_role_registry
-from ..core.widget_factory import WidgetFactory, get_widget_factory
+from PyQt6.QtCore import QTimer, pyqtSignal, pyqtSlot
+from PyQt6.QtGui import QAction
+from PyQt6.QtWidgets import QInputDialog, QMainWindow, QMessageBox, QStatusBar, QWidget
+
 from ..core.backend_bridge import BackendBridge, get_backend_bridge
+from ..core.role_registry import Permission, RolePolicy, RoleRegistry, get_role_registry
+from ..core.widget_factory import WidgetFactory, get_widget_factory
 from .role_aware_container import RoleAwareContainer
 
 
@@ -64,16 +66,16 @@ class MainWindow(QMainWindow):
         self._add_menu_action(file_menu, "&New Workspace", "workspace.new")
         file_menu.addSeparator()
         self._add_menu_action(file_menu, "E&xit", "app.exit", shortcut="Ctrl+Q")
-        
+
         edit_menu = menubar.addMenu("&Edit")
         self._add_menu_action(edit_menu, "&Undo", "edit.undo", shortcut="Ctrl+Z")
-        
+
         self._view_menu = menubar.addMenu("&View")
-        
+
         data_menu = menubar.addMenu("&Data")
         self._add_menu_action(data_menu, "&Import Dataset", "data.import")
         self._add_menu_action(data_menu, "&Validate", "data.validate")
-        
+
         # B0 Ingestion menu - Data Steward access
         self._ingestion_menu = menubar.addMenu("&Ingestion")
         self._oep_submenu = self._ingestion_menu.addMenu("&OEP (Open Energy Platform)")
@@ -87,11 +89,11 @@ class MainWindow(QMainWindow):
         self._add_menu_action(self._hkg_submenu, "&Run Ingestion", "ingestion.hkg.run", is_ingestion=True)
         self._ingestion_menu.addSeparator()
         self._add_menu_action(self._ingestion_menu, "&Workflow Status", "ingestion.workflow.status", is_ingestion=True)
-        
+
         semantic_menu = menubar.addMenu("&Semantic")
         self._add_menu_action(semantic_menu, "&Expand", "semantic.expand")
         self._add_menu_action(semantic_menu, "&Annotate", "semantic.annotate")
-        
+
         help_menu = menubar.addMenu("&Help")
         self._add_menu_action(help_menu, "&About", "help.about")
 
@@ -128,7 +130,7 @@ class MainWindow(QMainWindow):
         policy = self._current_policy
         if not policy:
             return
-        
+
         # Standard menu permissions
         permission_map: dict[str, Permission] = {
             "data.import": Permission.IMPORT_DATASETS,
@@ -142,7 +144,7 @@ class MainWindow(QMainWindow):
                 required = permission_map[action_id]
                 visible = policy.has_permission(required)
                 action.setVisible(visible)
-        
+
         # Ingestion menu visibility (Data Steward workflow)
         ingestion_permission_map: dict[str, Permission] = {
             "ingestion.oep.get_metadata": Permission.RUN_INGESTION_OEP,
@@ -160,7 +162,7 @@ class MainWindow(QMainWindow):
             ]
         )
         self._ingestion_menu.setVisible(has_ingestion_access)
-        
+
         for action in self._ingestion_menu_actions:
             action_id = action.data()
             if action_id in ingestion_permission_map:
