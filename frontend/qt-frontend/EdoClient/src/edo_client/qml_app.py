@@ -22,7 +22,7 @@ def _setup_logging() -> logging.Logger:
     log_dir = pathlib.Path.home() / ".edo-client" / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
 
-    root = logging.getLogger("edo_client.qml")
+    root = logging.getLogger("edo_client")
     root.setLevel(logging.DEBUG)
 
     # Clear existing handlers to avoid duplicates
@@ -101,7 +101,7 @@ class QMLApplication(QObject):
         self._engine.rootContext().setContextProperty("pythonBridge", self._bridge)
 
         # Load main QML file
-        qml_file = qml_path / "EdoClientContent" / "App.qml"
+        qml_file = qml_path / "EdoClient" / "App.qml"
         if not qml_file.exists():
             self._log.error("QML file not found: %s", qml_file)
             return 1

@@ -1,0 +1,7 @@
+# EDO Client QML Root Module
+
+module EdoClient
+
+# Import submodules
+import EdoClient 1.0 as EdoClient
+import EdoClientContent 1.0 as EdoClientContent

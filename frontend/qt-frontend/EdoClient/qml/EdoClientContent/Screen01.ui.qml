@@ -1,150 +1,218 @@
+
+
 /*
  * Screen01 - Main Content Area
- * 
- * This is a UI file (.ui.qml) designed for Qt Design Studio.
- * It provides the main content area with navigation and data display.
+ *
+ * UI component for EdoClient main screen with navigation and data display.
  */
-
 import QtQuick
 import QtQuick.Controls 2.15
 import QtQuick.Layouts
+import "../EdoClient" as EdoClient
 
 Rectangle {
     id: mainScreen
-    
-    color: "#f5f5f5"
-    
+
+    color: EdoClient.Constants.lightGray
+
     // Signals for Python integration
     signal dataLoaded(var data)
     signal actionTriggered(string actionId, var params)
     signal statusMessage(string message)
+    signal roleSelected(string roleId)
     
-    // Public functions
-    function displayData(data) {
-        contentArea.currentData = data
-        contentArea.load()
-    }
-    
-    function newWorkspace() {
-        contentArea.clear()
-        statusMessage("New workspace created")
-    }
-    
+
+
+
+
+    // Properties for external control
+    property var externalData: null
+    property bool triggerNewWorkspace: false
+
+    // Navigation state
+    property int currentNavIndex: 0
+
     // Top navigation bar
     Rectangle {
         id: navBar
-        height: 50
+        height: EdoClient.Constants.headerHeight - 10
         width: parent.width
-        color: "white"
-        
+        color: EdoClient.Constants.backgroundColor
+
         RowLayout {
             anchors.fill: parent
             anchors.leftMargin: 15
             anchors.rightMargin: 15
-            
+
             // Navigation buttons
-            Repeater {
-                model: [
-                    { label: "📊 Datasets", id: "nav_datasets" },
-                    { label: "📈 Timeseries", id: "nav_timeseries" },
-                    { label: "🔗 RDF Graph", id: "nav_rdf" },
-                    { label: "⚙️ Settings", id: "nav_settings" }
-                ]
+            Button {
+                id: navDatasets
+                text: "Datasets"
+                flat: false
+                Layout.preferredWidth: 120
+                rightPadding: 4
+                bottomPadding: 4
+                padding: 4
+                leftPadding: 4
+                topPadding: 4
+                Layout.margins: 4
+                Layout.leftMargin: 4
+                Layout.topMargin: 4
+                icon.cache: true
+                icon.height: 16
+                icon.width: 16
+                display: AbstractButton.TextBesideIcon
+                Layout.preferredHeight: 35
+                icon.source: "images/layers.svg"
                 
-                delegate: Button {
-                    text: modelData.label
-                    Layout.preferredHeight: 35
-                    
-                    FlatButtonBackground {
-                        id: navBtnBg
-                    }
-                    
-                    contentItem: Text {
-                        text: parent.text
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        color: "#333"
-                    }
-                    
-                    component FlatButtonBackground: Rectangle {
-                        color: parent.parent.pressed ? "#e0e0e0" : (parent.parent.hovered ? "#f0f0f0" : "transparent")
-                        radius: 4
-                    }
-                    
-                    onClicked: {
-                        if (modelData.id === "nav_datasets") {
-                            navStack.currentIndex = 0
-                        } else if (modelData.id === "nav_timeseries") {
-                            navStack.currentIndex = 1
-                        } else if (modelData.id === "nav_rdf") {
-                            navStack.currentIndex = 2
-                        } else if (modelData.id === "nav_settings") {
-                            navStack.currentIndex = 3
-                        }
-                    }
+                onClicked: {
+                    currentNavIndex = 0
+                    mainScreen.actionTriggered("nav.datasets", {})
                 }
             }
-            
-            Item { Layout.fillWidth: true }
-            
+
+            Button {
+                id: navTimeseries
+                text: "Timeseries"
+                flat: false
+                Layout.preferredWidth: 120
+                rightPadding: 4
+                bottomPadding: 4
+                padding: 4
+                leftPadding: 4
+                topPadding: 4
+                Layout.margins: 4
+                Layout.leftMargin: 4
+                Layout.topMargin: 4
+                icon.cache: true
+                icon.height: 16
+                icon.width: 16
+                display: AbstractButton.TextBesideIcon
+                Layout.preferredHeight: 35
+                icon.source: "images/folder-clock.svg"
+                
+                onClicked: {
+                    currentNavIndex = 1
+                    mainScreen.actionTriggered("nav.timeseries", {})
+                }
+            }
+
+            Button {
+                id: navRdf
+                text: "RDF Graph"
+                flat: false
+                Layout.preferredWidth: 120
+                rightPadding: 4
+                bottomPadding: 4
+                padding: 4
+                leftPadding: 4
+                topPadding: 4
+                Layout.margins: 4
+                Layout.leftMargin: 4
+                Layout.topMargin: 4
+                icon.cache: true
+                icon.height: 16
+                icon.width: 16
+                display: AbstractButton.TextBesideIcon
+                Layout.preferredHeight: 35
+                icon.source: "images/share-2.svg"
+                
+                onClicked: {
+                    currentNavIndex = 2
+                    mainScreen.actionTriggered("nav.rdf", {})
+                }
+            }
+
+            Button {
+                id: navSettings
+                text: "Settings"
+                flat: false
+                Layout.preferredWidth: 120
+                rightPadding: 4
+                bottomPadding: 4
+                padding: 4
+                leftPadding: 4
+                topPadding: 4
+                Layout.margins: 4
+                Layout.leftMargin: 4
+                Layout.topMargin: 4
+                icon.cache: true
+                icon.height: 16
+                icon.width: 16
+                display: AbstractButton.TextBesideIcon
+                Layout.preferredHeight: 35
+                icon.source: "images/settings.svg"
+                
+                onClicked: {
+                    currentNavIndex = 3
+                    mainScreen.actionTriggered("nav.settings", {})
+                }
+            }
+
+            Item {
+                Layout.fillWidth: true
+            }
+
             // Action buttons
             Button {
                 id: importBtn
                 text: "Import"
-                visible: mainScreen.parent && mainScreen.parent.currentRole !== "guest_viewer"
+                flat: false
+                Layout.preferredWidth: 120
+                rightPadding: 4
+                bottomPadding: 4
+                padding: 4
+                leftPadding: 4
+                topPadding: 4
+                Layout.margins: 4
+                Layout.leftMargin: 4
+                Layout.topMargin: 4
+                icon.cache: true
+                icon.height: 16
+                icon.width: 16
+                display: AbstractButton.TextBesideIcon
+                Layout.preferredHeight: 35
+                icon.source: "images/download.svg"
+                visible: true
                 
-                background: Rectangle {
-                    color: importBtn.pressed ? "#004B87" : (importBtn.hovered ? "#005CA3" : "#00305E")
-                    radius: 4
-                }
-                
-                contentItem: Text {
-                    text: importBtn.text
-                    color: "white"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
-                
-                onClicked: {
-                    actionTriggered("data.import", {})
-                }
+                onClicked: mainScreen.actionTriggered("data.import", {})
             }
         }
     }
-    
+
     // Stack for different views
     StackLayout {
         id: navStack
-        currentIndex: 0
+        currentIndex: currentNavIndex
         anchors.top: navBar.bottom
         anchors.bottom: parent.bottom
         width: parent.width
-        
+
         // Page 1: Datasets
         Rectangle {
-            color: "#f5f5f5"
-            
+            color: EdoClient.Constants.lightGray
+
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 20
-                spacing: 15
-                
+                anchors.margins: EdoClient.Constants.defaultMargin
+                spacing: EdoClient.Constants.smallMargin + 5
+
                 Label {
                     text: "Datasets"
                     font.pixelSize: 24
                     font.bold: true
                     color: "#333"
                 }
-                
+
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     color: "white"
                     radius: 8
-                    
+
                     border.color: "#dee2e6"
                     border.width: 1
-                    
+
                     Label {
                         anchors.centerIn: parent
                         text: "Dataset Browser\n\nImport or select a dataset to begin"
@@ -155,32 +223,32 @@ Rectangle {
                 }
             }
         }
-        
+
         // Page 2: Timeseries
         Rectangle {
-            color: "#f5f5f5"
-            
+            color: EdoClient.Constants.lightGray
+
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 20
-                spacing: 15
-                
+                anchors.margins: EdoClient.Constants.defaultMargin
+                spacing: EdoClient.Constants.smallMargin + 5
+
                 Label {
                     text: "Timeseries Data"
                     font.pixelSize: 24
                     font.bold: true
                     color: "#333"
                 }
-                
+
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     color: "white"
                     radius: 8
-                    
+
                     border.color: "#dee2e6"
                     border.width: 1
-                    
+
                     Label {
                         anchors.centerIn: parent
                         text: "Timeseries Grid\n\nLoad timeseries data to view"
@@ -191,32 +259,32 @@ Rectangle {
                 }
             }
         }
-        
+
         // Page 3: RDF
         Rectangle {
-            color: "#f5f5f5"
-            
+            color: EdoClient.Constants.lightGray
+
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 20
-                spacing: 15
-                
+                anchors.margins: EdoClient.Constants.defaultMargin
+                spacing: EdoClient.Constants.smallMargin + 5
+
                 Label {
                     text: "RDF Knowledge Graph"
                     font.pixelSize: 24
                     font.bold: true
                     color: "#333"
                 }
-                
+
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     color: "white"
                     radius: 8
-                    
+
                     border.color: "#dee2e6"
                     border.width: 1
-                    
+
                     Label {
                         anchors.centerIn: parent
                         text: "RDF Inspector\n\nLoad RDF data to inspect"
@@ -227,63 +295,69 @@ Rectangle {
                 }
             }
         }
-        
+
         // Page 4: Settings
         Rectangle {
-            color: "#f5f5f5"
-            
+            color: EdoClient.Constants.lightGray
+
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 20
-                spacing: 15
-                
+                anchors.margins: EdoClient.Constants.defaultMargin
+                spacing: EdoClient.Constants.smallMargin + 5
+
                 Label {
                     text: "Settings"
                     font.pixelSize: 24
                     font.bold: true
                     color: "#333"
                 }
-                
+
                 GroupBox {
                     title: "User Role"
                     Layout.fillWidth: true
-                    
+
                     ColumnLayout {
                         anchors.fill: parent
-                        
+
+                        // Role radio buttons
                         RadioButton {
                             id: roleGuest
                             text: "Guest Viewer"
-                            checked: mainScreen.parent ? mainScreen.parent.currentRole === "guest_viewer" : false
-                            onClicked: {
-                                if (mainScreen.parent) mainScreen.parent.setRole("guest_viewer")
+                            checked: true
+                            property string roleValue: "guest_viewer"
+                            
+                            onToggled: {
+                                if (checked) mainScreen.roleSelected(roleGuest.roleValue)
                             }
                         }
-                        
+
                         RadioButton {
                             id: roleFellow
                             text: "Research Fellow"
-                            checked: mainScreen.parent ? mainScreen.parent.currentRole === "research_fellow" : false
-                            onClicked: {
-                                if (mainScreen.parent) mainScreen.parent.setRole("research_fellow")
+                            property string roleValue: "research_fellow"
+                            
+                            onToggled: {
+                                if (checked) mainScreen.roleSelected(roleFellow.roleValue)
                             }
                         }
-                        
+
                         RadioButton {
                             id: roleSteward
                             text: "Data Steward"
-                            checked: mainScreen.parent ? mainScreen.parent.currentRole === "data_steward" : false
-                            onClicked: {
-                                if (mainScreen.parent) mainScreen.parent.setRole("data_steward")
+                            property string roleValue: "data_steward"
+                            
+                            onToggled: {
+                                if (checked) mainScreen.roleSelected(roleSteward.roleValue)
                             }
                         }
-                        
+
                         RadioButton {
                             id: roleAdmin
                             text: "Administrator"
-                            checked: mainScreen.parent ? mainScreen.parent.currentRole === "admin" : false
-                            onClicked: {
-                                if (mainScreen.parent) mainScreen.parent.setRole("admin")
+                            property string roleValue: "admin"
+                            
+                            onToggled: {
+                                if (checked) mainScreen.roleSelected(roleAdmin.roleValue)
                             }
                         }
                     }
@@ -291,11 +365,13 @@ Rectangle {
             }
         }
     }
-    
-    // Content overlay for displaying loaded data
-    ContentArea {
-        id: contentArea
+
+    // Note: ContentArea to be added in wrapper component
+    // Placeholder for dynamic content
+    Rectangle {
+        id: contentPlaceholder
         anchors.fill: parent
-        visible: currentData !== null
+        color: "transparent"
+        visible: false
     }
 }

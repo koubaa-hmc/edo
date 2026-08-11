@@ -36,11 +36,11 @@ EdoClient/
 │
 ├── qml/                        # QML files (Qt Design Studio)
 │   ├── EdoClientContent/
-│   │   ├── App.qml                 # Main window
 │   │   ├── Screen01.ui.qml         # Main content (editable in QDS)
 │   │   └── ContentArea.qml         # Dynamic data display
 │   │
 │   └── EdoClient/
+│       ├── App.qml                 # Main window
 │       ├── Constants.qml           # Shared constants
 │       └── qmldir                  # QML module definition
 │
@@ -115,8 +115,8 @@ The following QML files are designed to be edited in **Qt Design Studio**:
 | File | Description |
 |------|-------------|
 | `qml/EdoClientContent/Screen01.ui.qml` | Main content area (.ui.qml format) |
-| `qml/EdoClientContent/App.qml` | Application window |
 | `qml/EdoClientContent/ContentArea.qml` | Dynamic data display component |
+| `qml/EdoClient/App.qml` | Application window |
 | `qml/EdoClient/Constants.qml` | Shared constants (singleton) |
 
 ### Workflow
@@ -238,7 +238,7 @@ docs/                   Documentation
 | `src/edo_client/qml_app.py` | QML application logic | PyCharm |
 | `src/edo_client/qml_bridge.py` | Python-QML integration | PyCharm |
 | `qml/EdoClientContent/Screen01.ui.qml` | Main UI layout | Qt Design Studio |
-| `qml/EdoClientContent/App.qml` | Window definition | Both |
+| `qml/EdoClient/App.qml` | Window definition | Both |
 | `CMakeLists.txt` | Build configuration | Text editor |
 
 ## 🐛 Troubleshooting

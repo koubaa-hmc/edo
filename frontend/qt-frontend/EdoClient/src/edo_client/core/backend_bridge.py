@@ -167,11 +167,49 @@ class BackendBridge:
             parameters={}
         ))
         
+        # Navigation actions (no-op for now)
+        self.register_action(ActionSpec(
+            action_id="nav.datasets",
+            display_name="Navigate to Datasets",
+            description="Switch to datasets view",
+            parameters={}
+        ))
+        self.register_action(ActionSpec(
+            action_id="nav.timeseries",
+            display_name="Navigate to Timeseries",
+            description="Switch to timeseries view",
+            parameters={}
+        ))
+        self.register_action(ActionSpec(
+            action_id="nav.rdf",
+            display_name="Navigate to RDF Graph",
+            description="Switch to RDF graph view",
+            parameters={}
+        ))
+        self.register_action(ActionSpec(
+            action_id="nav.settings",
+            display_name="Navigate to Settings",
+            description="Switch to settings view",
+            parameters={}
+        ))
+        
         # Register demo handlers for testing
         self._register_demo_handlers()
     
     def _register_demo_handlers(self) -> None:
         """Register demo handlers for UI testing."""
+        
+        # Navigation handlers (no-op)
+        async def demo_nav(params: Dict[str, Any]) -> ActionResult:
+            return ActionResult.success(
+                params.get("action_id", "nav"),
+                message="Navigation updated"
+            )
+        
+        self.register_handler("nav.datasets", demo_nav)
+        self.register_handler("nav.timeseries", demo_nav)
+        self.register_handler("nav.rdf", demo_nav)
+        self.register_handler("nav.settings", demo_nav)
         
         async def demo_import(params: Dict[str, Any]) -> ActionResult:
             await asyncio.sleep(0.5)  # Simulate work
@@ -237,15 +275,23 @@ class BackendBridge:
     
     async def execute(self, action_id: str, **params: Any) -> ActionResult:
         """Execute an action asynchronously."""
+        import logging
+        log = logging.getLogger("edo_client")
+        log.info("⚙️ Executing action: %s with params=%r", action_id, params)
+        
         spec = self._actions.get(action_id)
         if not spec:
+            log.warning("⚠️ Unknown action: %s", action_id)
             return ActionResult.error(action_id, f"Unknown action: {action_id}")
         
         handler = self._handlers.get(action_id)
         if handler:
             try:
-                return await handler(params)
+                result = await handler(params)
+                log.info("✅ Action completed: %s - %s", action_id, result.message)
+                return result
             except Exception as e:
+                log.error("❌ Action failed: %s - %s", action_id, str(e))
                 return ActionResult.error(action_id, str(e))
         
         # Default: return success with no data

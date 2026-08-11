@@ -1,0 +1,6 @@
+# EDO Client Content QML Module
+
+module EdoClientContent
+
+ContentArea 1.0 ContentArea.qml
+Screen01 1.0 Screen01.ui.qml
