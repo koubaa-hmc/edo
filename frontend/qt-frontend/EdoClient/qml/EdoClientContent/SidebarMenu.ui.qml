@@ -18,6 +18,49 @@ Item {
     property string userName: "Guest User"
     property string userRole: "guest_viewer"
 
+    // State management for open/close animation
+    state: "closed"
+
+    states: [
+        State {
+            name: "closed"
+            PropertyChanges {
+                target: sidebarRoot
+                x: -sidebarRoot.width
+            }
+        },
+        State {
+            name: "open"
+            PropertyChanges {
+                target: sidebarRoot
+                x: 0
+            }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            from: "closed"
+            to: "open"
+            NumberAnimation {
+                target: sidebarRoot
+                property: "x"
+                duration: 250
+                easing.type: Easing.OutCubic
+            }
+        },
+        Transition {
+            from: "open"
+            to: "closed"
+            NumberAnimation {
+                target: sidebarRoot
+                property: "x"
+                duration: 250
+                easing.type: Easing.InCubic
+            }
+        }
+    ]
+
     // Expose workflow buttons (wrapper type with clicked signal)
     property var planButton: planButton
     property var collectButton: collectButton

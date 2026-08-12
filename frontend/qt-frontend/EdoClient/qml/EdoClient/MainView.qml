@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
 import "../EdoClientContent" as Content
 
@@ -14,22 +15,58 @@ Item {
         anchors.fill: parent
     }
 
-    // Connect the button click safely using the instantiated UI form's alias
-    Connections {
-        target: uiView.toggleButton
-        function onClicked() {
-            uiView.sidebar.state = (uiView.sidebar.state === "open") ? "closed" : "open"
+    // Wrapper container for the toggle button with animated positioning
+    Item {
+        id: toggleButtonWrapper
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: uiView.sidebar.state === "open" ? 296 : 16
+        anchors.topMargin: 16
+        z: 20
+        width: 44
+        height: 44
+
+        Behavior on anchors.leftMargin {
+            NumberAnimation {
+                duration: 400
+                easing.type: Easing.OutCubic
+            }
+        }
+
+        // Actual button inside the wrapper
+        Button {
+            id: innerToggleButton
+            anchors.fill: parent
+
+            background: Rectangle {
+                anchors.fill: parent
+                radius: 8
+                color: innerToggleButton.pressed ? "#e5e7eb" : (innerToggleButton.hovered ? "#f3f4f6" : "transparent")
+            }
+
+            contentItem: Image {
+                source: "../EdoClientContent/images/icons/chevron-right.svg"
+                fillMode: Image.PreserveAspectFit
+                visible: status === Image.Ready
+                rotation: uiView.sidebar.state === "open" ? 180 : 0
+
+                Behavior on rotation {
+                    NumberAnimation {
+                        duration: 400
+                        easing.type: Easing.OutCubic
+                    }
+                }
+            }
+
+            onClicked: {
+                uiView.sidebar.state = (uiView.sidebar.state === "open") ? "closed" : "open"
+            }
         }
     }
 
-    // Sync button text and overlay opacity when sidebar state changes
-    Connections {
-        target: uiView.sidebar
-        function onStateChanged() {
-            let isOpen = (uiView.sidebar.state === "open")
-            uiView.toggleButton.text = isOpen ? "Close Menu" : "Open Menu"
-            uiView.overlay.opacity = isOpen ? 0.3 : 0.0
-        }
+    // Hide the original button from the UI form
+    Component.onCompleted: {
+        uiView.toggleButton.visible = false
     }
 
     // Connect workflow buttons to log and emit workflowRequested signal

@@ -27,10 +27,26 @@ Item {
 
     Button {
         id: toggleButton
-        text: "Open Menu" // Default static text; MainView.qml will update it dynamically
-        anchors.verticalCenterOffset: -360
-        anchors.horizontalCenterOffset: -560
-        anchors.centerIn: parent
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 16
+        anchors.topMargin: 16
+        z: 20
+        implicitWidth: 44
+        implicitHeight: 44
+        text: "" // No text, icon-only button
+
+        background: Rectangle {
+            anchors.fill: parent
+            radius: 8
+            color: "transparent"
+        }
+
+        contentItem: Image {
+            source: "../EdoClientContent/images/icons/chevron-right.svg"
+            fillMode: Image.PreserveAspectFit
+            visible: status === Image.Ready
+        }
     }
 
     Rectangle {
