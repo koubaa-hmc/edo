@@ -7,6 +7,7 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../EdoClient" as EdoClient
 
 Item {
     id: sidebarRoot
@@ -17,14 +18,14 @@ Item {
     property string userName: "Guest User"
     property string userRole: "guest_viewer"
 
-    // Expose workflow buttons for external wiring
-    property alias planButton: planButton
-    property alias collectButton: collectButton
-    property alias processButton: processButton
-    property alias analyzeButton: analyzeButton
-    property alias preserveButton: preserveButton
-    property alias shareButton: shareButton
-    property alias reuseButton: reuseButton
+    // Expose workflow buttons (wrapper type with clicked signal)
+    property var planButton: planButton
+    property var collectButton: collectButton
+    property var processButton: processButton
+    property var analyzeButton: analyzeButton
+    property var preserveButton: preserveButton
+    property var shareButton: shareButton
+    property var reuseButton: reuseButton
 
     // Signal for exit request
     signal exitRequested()
@@ -136,7 +137,7 @@ Item {
                     }
 
                     // PLAN
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: planButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/file-pen.svg"
@@ -145,7 +146,7 @@ Item {
                     }
 
                     // COLLECT
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: collectButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/upload.svg"
@@ -154,7 +155,7 @@ Item {
                     }
 
                     // PROCESS
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: processButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/code-2.svg"
@@ -163,7 +164,7 @@ Item {
                     }
 
                     // ANALYZE
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: analyzeButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/search-code.svg"
@@ -172,7 +173,7 @@ Item {
                     }
 
                     // PRESERVE
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: preserveButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/shield-check.svg"
@@ -181,7 +182,7 @@ Item {
                     }
 
                     // SHARE
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: shareButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/share-2.svg"
@@ -190,7 +191,7 @@ Item {
                     }
 
                     // REUSE
-                    WorkflowButton {
+                    EdoClient.WorkflowButton {
                         id: reuseButton
                         Layout.fillWidth: true
                         iconSource: "../EdoClientContent/images/icons/link-2.svg"

@@ -7,7 +7,7 @@ Item {
     property alias iconSource: iconImage.source
     property alias labelText: buttonLabel.text
     property alias description: descLabel.text
-    signal clicked
+    property alias mouseArea: mouseArea
 
     Layout.preferredHeight: 64
 
@@ -22,7 +22,6 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: buttonRoot.clicked()
         }
     }
 

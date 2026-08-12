@@ -5,6 +5,7 @@
         <file>qml/EdoClient/MainView.qml</file>
         <file>qml/EdoClient/qmldir</file>
         <file>qml/EdoClient/SidebarMenu.qml</file>
+        <file>qml/EdoClient/WorkflowButton.qml</file>
         <file>qml/EdoClientContent/App.ui.qml</file>
         <file>qml/EdoClientContent/MainView.ui.qml</file>
         <file>qml/EdoClientContent/qmldir</file>
