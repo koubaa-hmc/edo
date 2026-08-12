@@ -7,7 +7,7 @@ Item {
     property alias iconSource: iconImage.source
     property alias labelText: buttonLabel.text
     property alias description: descLabel.text
-    property alias mouseArea: mouseArea
+    property bool hovered: false
 
     Layout.preferredHeight: 64
 
@@ -15,14 +15,7 @@ Item {
         id: buttonBackground
         anchors.fill: parent
         radius: 8
-        color: mouseArea.containsMouse ? "#f3f4f6" : "transparent"
-
-        MouseArea {
-            id: mouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            cursorShape: Qt.PointingHandCursor
-        }
+        color: hovered ? "#f3f4f6" : "transparent"
     }
 
     RowLayout {
