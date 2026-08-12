@@ -3,14 +3,32 @@ import QtQuick.Controls
 
 import "../EdoClientContent" as Content
 
-Content.MainView {
+Item {
     id: root
+    width: 1280
+    height: 800
 
-    // Connect the button click imperatively here, completely outside the .ui.qml file
+    // Instantiate the UI form from the content folder inside this wrapper
+    Content.MainView {
+        id: uiView
+        anchors.fill: parent
+    }
+
+    // Connect the button click safely using the instantiated UI form's alias
     Connections {
-        target: root.toggleButton
+        target: uiView.toggleButton
         function onClicked() {
-            root.sidebar.state = (root.sidebar.state === "open") ? "closed" : "open"
+            uiView.sidebar.state = (uiView.sidebar.state === "open") ? "closed" : "open"
+        }
+    }
+
+    // Sync button text and overlay opacity when sidebar state changes
+    Connections {
+        target: uiView.sidebar
+        function onStateChanged() {
+            let isOpen = (uiView.sidebar.state === "open")
+            uiView.toggleButton.text = isOpen ? "Close Menu" : "Open Menu"
+            uiView.overlay.opacity = isOpen ? 0.3 : 0.0
         }
     }
 }

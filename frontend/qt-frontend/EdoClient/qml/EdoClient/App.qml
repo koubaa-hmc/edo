@@ -27,7 +27,7 @@ ApplicationWindow {
     Loader {
         id: mainLoader
         anchors.fill: parent
-        sourceComponent: root.showSplash ? splashComponent : mainAppComponent
+        sourceComponent: root.showSplash ? splashComponent : mainView
     }
 
     // Component 1: The 4-second Splash Screen (App.ui.qml content)
@@ -41,10 +41,11 @@ ApplicationWindow {
 
     // Component 2: The Main Application View with the Drawer
     Component {
-        id: mainAppComponent
-        Content.MainView {
-                    width: root.width
-                    height: root.height
-                }
+        id: mainView
+        // If MainView.qml is in EdoClient, load it directly or via your local imports:
+        MainView {
+            width: root.width
+            height: root.height
+        }
     }
 }

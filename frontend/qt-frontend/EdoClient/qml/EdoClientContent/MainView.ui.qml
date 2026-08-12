@@ -15,24 +15,26 @@ Item {
     width: 1280
     height: 800
 
-    // Background
+    property alias toggleButton: toggleButton
+    property alias sidebar: sidebar
+    property alias overlay: overlay // Expose overlay to be managed outside
+
     Rectangle {
         anchors.fill: parent
         color: "#f5f5f5"
     }
 
-    // Button to toggle the custom drawer open/closed
     Button {
-        text: sidebar.state === "open" ? "Close Menu" : "Open Menu"
+        id: toggleButton
+        text: "Open Menu" // Default static text; MainView.qml will update it dynamically
         anchors.centerIn: parent
     }
 
-    // Semi-transparent backdrop overlay when drawer is open (optional)
     Rectangle {
         id: overlay
         anchors.fill: parent
         color: "#000000"
-        opacity: sidebar.state === "open" ? 0.3 : 0.0
+        opacity: 0.0 // Default hidden; controlled via states or MainView.qml
         visible: opacity > 0
 
         Behavior on opacity {
@@ -42,16 +44,17 @@ Item {
         }
 
         MouseArea {
+            id: overlayMouse
             anchors.fill: parent
-            onClicked: sidebar.state = "closed"
+            onClicked: sidebar.state
+                       = "closed" // Direct state assignment is permitted for simple triggers here
         }
     }
 
-    // The Custom Sidebar Component placed on top layer
     SidebarMenu {
         id: sidebar
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        z: 10 // Ensure it sits above the background/content
+        z: 10
     }
 }
