@@ -17,8 +17,20 @@ Item {
     property string userName: "Guest User"
     property string userRole: "guest_viewer"
 
+    // Expose workflow buttons for external wiring
+    property alias planButton: planButton
+    property alias collectButton: collectButton
+    property alias processButton: processButton
+    property alias analyzeButton: analyzeButton
+    property alias preserveButton: preserveButton
+    property alias shareButton: shareButton
+    property alias reuseButton: reuseButton
+
     // Signal for exit request
     signal exitRequested()
+
+    // Signal for workflow navigation (emitted by parent via button connections)
+    signal workflowRequested(string step)
 
     // Background panel of the drawer
     Rectangle {

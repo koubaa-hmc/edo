@@ -22,6 +22,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
+            onClicked: buttonRoot.clicked()
         }
     }
 

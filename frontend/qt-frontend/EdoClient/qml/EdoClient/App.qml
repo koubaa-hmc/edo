@@ -44,6 +44,7 @@ ApplicationWindow {
         id: mainView
         // If MainView.qml is in EdoClient, load it directly or via your local imports:
         MainView {
+            id: mainViewInstance
             width: root.width
             height: root.height
         }
