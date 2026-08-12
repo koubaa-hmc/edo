@@ -27,4 +27,6 @@ Project {
 
     qt6Project: true
     importPaths: [ "." ]
+
+    mainUiFile: "qml/EdoClientContent/SidebarMenu.ui.qml"
 }

@@ -3,9 +3,13 @@
         <file>EdoClient.qmlproject</file>
         <file>qml/EdoClient/App.qml</file>
         <file>qml/EdoClient/MainView.qml</file>
+        <file>qml/EdoClient/qmldir</file>
+        <file>qml/EdoClient/SidebarMenu.qml</file>
         <file>qml/EdoClientContent/App.ui.qml</file>
         <file>qml/EdoClientContent/MainView.ui.qml</file>
+        <file>qml/EdoClientContent/qmldir</file>
         <file>qml/EdoClientContent/SidebarMenu.ui.qml</file>
+        <file>qml/EdoClientContent/WorkflowButton.ui.qml</file>
         <file>qml/qtquickcontrols2.conf</file>
     </qresource>
 </RCC>

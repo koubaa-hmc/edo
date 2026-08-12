@@ -1,5 +1,3 @@
-
-
 /*
 This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
 It is supposed to be strictly declarative and only uses a subset of QML. If you edit
@@ -19,6 +17,9 @@ Item {
     property alias sidebar: sidebar
     property alias overlay: overlay // Expose overlay to be managed outside
 
+    // Expose sidebar's workflowRequested signal
+    signal workflowRequested(string step)
+
     Rectangle {
         anchors.fill: parent
         color: "#f5f5f5"
@@ -27,6 +28,8 @@ Item {
     Button {
         id: toggleButton
         text: "Open Menu" // Default static text; MainView.qml will update it dynamically
+        anchors.verticalCenterOffset: -360
+        anchors.horizontalCenterOffset: -560
         anchors.centerIn: parent
     }
 
