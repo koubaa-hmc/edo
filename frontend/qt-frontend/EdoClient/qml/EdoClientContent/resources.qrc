@@ -1,0 +1,35 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <!-- Images root -->
+        <file alias="images">images</file>
+        
+        <!-- Individual image files for direct access -->
+        <file alias="images/settings.svg">images/settings.svg</file>
+        <file alias="images/download.svg">images/download.svg</file>
+        <file alias="images/layers.svg">images/layers.svg</file>
+        <file alias="images/share-2.svg">images/share-2.svg</file>
+        
+        <!-- Icons -->
+        <file alias="images/icons/triangle-alert.svg">images/icons/triangle-alert.svg</file>
+        <file alias="images/icons/file-pen.svg">images/icons/file-pen.svg</file>
+        <file alias="images/icons/file-edit.svg">images/icons/file-edit.svg</file>
+        <file alias="images/icons/file-text.svg">images/icons/file-text.svg</file>
+        <file alias="images/icons/code-2.svg">images/icons/code-2.svg</file>
+        <file alias="images/icons/chevron-right.svg">images/icons/chevron-right.svg</file>
+        <file alias="images/icons/log-in.svg">images/icons/log-in.svg</file>
+        <file alias="images/icons/save.svg">images/icons/save.svg</file>
+        <file alias="images/icons/plug.svg">images/icons/plug.svg</file>
+        <file alias="images/icons/upload.svg">images/icons/upload.svg</file>
+        <file alias="images/icons/filter.svg">images/icons/filter.svg</file>
+        <file alias="images/icons/check-circle-2.svg">images/icons/check-circle-2.svg</file>
+        <file alias="images/icons/map-pin.svg">images/icons/map-pin.svg</file>
+        <file alias="images/icons/user-check.svg">images/icons/user-check.svg</file>
+        <file alias="images/icons/copy.svg">images/icons/copy.svg</file>
+        <file alias="images/icons/badge-check.svg">images/icons/badge-check.svg</file>
+        <file alias="images/icons/alert-triangle.svg">images/icons/alert-triangle.svg</file>
+        
+        <!-- Fonts -->
+        <file alias="fonts">fonts</file>
+    </qresource>
+</RCC>

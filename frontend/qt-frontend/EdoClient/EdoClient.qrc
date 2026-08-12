@@ -1,0 +1,11 @@
+<RCC>
+    <qresource>
+        <file>EdoClient.qmlproject</file>
+        <file>qml/EdoClient/App.qml</file>
+        <file>qml/EdoClient/MainView.qml</file>
+        <file>qml/EdoClientContent/App.ui.qml</file>
+        <file>qml/EdoClientContent/MainView.ui.qml</file>
+        <file>qml/EdoClientContent/SidebarMenu.ui.qml</file>
+        <file>qml/qtquickcontrols2.conf</file>
+    </qresource>
+</RCC>

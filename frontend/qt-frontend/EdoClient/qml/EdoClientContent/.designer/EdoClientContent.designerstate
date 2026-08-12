@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE designerState>
+<designerState version="1.0">
+    <documentInfo name="EdoClientContent"/>
+    <resourceManager>
+        <searchPaths>
+            <path>images</path>
+            <path>fonts</path>
+        </searchPaths>
+    </resourceManager>
+</designerState>
