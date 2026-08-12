@@ -1,0 +1,21 @@
+{
+  "name": "cpu",
+  "viewBox": "0 0 24 24",
+  "width": 24,
+  "height": 24,
+  "tags": ["cpu"],
+  "paths": [
+    "M12 20v2
+M12 2v2
+M17 20v2
+M17 2v2
+M2 12h2
+M2 17h2
+M2 7h2
+M20 12h2
+M20 17h2
+M20 7h2
+M7 20v2
+M7 2v2"
+  ]
+}

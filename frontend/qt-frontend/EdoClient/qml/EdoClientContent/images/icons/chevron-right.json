@@ -1,0 +1,10 @@
+{
+  "name": "chevron-right",
+  "viewBox": "0 0 24 24",
+  "width": 24,
+  "height": 24,
+  "tags": ["chevron right"],
+  "paths": [
+    "m9 18 6-6-6-6"
+  ]
+}

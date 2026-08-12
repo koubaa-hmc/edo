@@ -1,0 +1,18 @@
+{
+  "name": "calendar-days",
+  "viewBox": "0 0 24 24",
+  "width": 24,
+  "height": 24,
+  "tags": ["calendar days"],
+  "paths": [
+    "M8 2v3
+M16 2v3
+M3 9h18
+M8 13h.01
+M12 13h.01
+M16 13h.01
+M8 17h.01
+M12 17h.01
+M16 17h.01"
+  ]
+}
