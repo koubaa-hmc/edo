@@ -21,15 +21,6 @@ Item {
     // Navigation signals for workflow buttons
     signal workflowRequested(string step)
 
-    Content.SidebarMenuUi {
-        id: ui
-        anchors.fill: parent
-        userName: sidebarRoot.userName
-        userRole: sidebarRoot.userRole
-        
-        onExitRequested: sidebarRoot.exitRequested()
-    }
-
     // Wire up workflow button clicks
     Connections {
         target: ui.planButton

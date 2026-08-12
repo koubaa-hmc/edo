@@ -15,15 +15,15 @@ Item {
     property alias iconSource: uiForm.iconSource
     property alias labelText: uiForm.labelText
     property alias description: uiForm.description
-    property alias mouseArea: mouseArea
 
     Content.WorkflowButtonUi {
         id: uiForm
         anchors.fill: parent
+        hovered: wrapperMouseArea.containsMouse
     }
 
     MouseArea {
-        id: mouseArea
+        id: wrapperMouseArea
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
