@@ -1,0 +1,31 @@
+class_derivations:
+  # 1. Root derivation: Everything starts here
+  DMPData:
+    populated_from: Project
+    slot_derivations:
+      title:
+        populated_from: research_question.title
+      created:
+        populated_from: schedule.project_start
+      modified:
+        populated_from: schedule.project_end
+      dataset:
+        populated_from: dataset
+        range: Dataset
+        # cast_collection_as: MultiValuedList
+      # partner:
+        # populated_from: partner
+        # range: Partner
+
+  # 2. Dataset derivation: Linked via the 'dataset' slot above
+  Dataset:
+    populated_from: Dataset
+    slot_derivations:
+      title:
+        populated_from: id
+      description:
+        populated_from: description
+      # personal_data:
+        # populated_from: sensitive_data.personal_data_yesno.yesno
+      # sensitive_data:
+        # populated_from: sensitive_data.other.yesno

@@ -1,0 +1,49 @@
+id: https://w3id.org/edo/pigeon-to-madmp-mapping
+name: pigeon-to-madmp-mapping
+imports:
+  - pigeon_schema
+  - maDMP_standard  # Assuming your maDMP schema is imported here
+
+# This mapping tells LinkML how the fields in your Pigeon structure
+# correspond to the fields in the maDMP standard.
+
+mappings:
+  # Project level mapping
+  pigeon:Project:
+    mappings:
+      - maDMP:Project
+    slot_mappings:
+      schedule.project_start:
+        map_to: maDMP:project/start
+      schedule.project_end:
+        map_to: maDMP:project/end
+      research_question.title:
+        map_to: maDMP:project/description
+
+  # Dataset level mapping
+  pigeon:Dataset:
+    mappings:
+      - maDMP:Dataset
+    slot_mappings:
+      id:
+        map_to: maDMP:dataset_id/identifier
+      description:
+        map_to: maDMP:dataset/description
+      metadata.creation_automatic:
+        map_to: maDMP:dataset/metadata
+      sensitive_data.personal_data_yesno:
+        map_to: maDMP:dataset/personal_data
+      preservation.repository:
+        map_to: maDMP:dataset/distribution/host/title
+      preservation.duration:
+        map_to: maDMP:dataset/preservation_statement
+
+  # Partner/Contact mapping
+  pigeon:Partner:
+    mappings:
+      - maDMP:Contact
+    slot_mappings:
+      contact_person.name:
+        map_to: maDMP:contact/name
+      id:
+        map_to: maDMP:contact/contact_id/identifier

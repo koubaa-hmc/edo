@@ -1,0 +1,9 @@
+{
+  "title": "The Task Force Harmony aims to improve metadata quality and standardization across Helmholtz data providers to enhance HMC services such as the Knowledge Graph and FAIR Dashboard. The goal is to create a seamless integration of data by harmonizing metadata practices across the Helmholtz ecosystem.",
+  "created": "2026-01-21",
+  "modified": "2028-03-21",
+  "dataset": {
+    "title": "Harvested Test Dataset",
+    "description": "This dataset represents a heterogeneous aggregation of metadata records, harvested via the OAI-PMH protocol and constrained to the OAI-DC schema. By implementing a simple random sampling strategy across a diverse array of source repositories, the collection serves as a statistically representative proxy for the broader metadata landscape. This approach mitigates institutional bias and ensures that subsequent statistical operations—such as quantifying element completion rates or analyzing term frequencies—reflect the actual distribution of metadata quality and practices within the ecosystem. Consequently, the dataset provides a robust empirical foundation for assessing interoperability and \"FAIRness\" at scale, particularly for discovery-level metadata."
+  }
+}

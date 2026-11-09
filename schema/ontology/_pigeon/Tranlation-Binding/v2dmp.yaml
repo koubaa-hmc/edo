@@ -1,0 +1,22 @@
+class_derivations:
+
+  DMPData:
+    populated_from: Project
+    slot_derivations:
+      # Fields from your previous 'DMPData' block
+      title:
+        populated_from: research_question.title
+      created:
+        populated_from: schedule.project_start
+      modified:
+        populated_from: schedule.project_end
+      dataset:
+        populated_from: dataset
+
+  Dataset:
+    populated_from: Dataset
+    slot_derivations:
+      title:
+        populated_from: id
+      description:
+        populated_from: description

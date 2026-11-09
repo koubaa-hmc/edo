@@ -1,0 +1,109 @@
+{
+    "additional_rdm_policy": {
+        "yesno": 186
+    },
+    "coordination": {
+        "name": "https://codebase.helmholtz.cloud/oonagh.mannix"
+    },
+    "dataset": {
+        "collaboration_organisation": "Codebase is intensively used in this context.",
+        "collaboration_tools": "Codebase is intensively used in this context.",
+        "collaboration_yesno": 453,
+        "creator": {
+            "name": "The data set is provided by the Helmholtz Knowledge Graph Team."
+        },
+        "description": "This dataset represents a heterogeneous aggregation of metadata records, harvested via the OAI-PMH protocol and constrained to the OAI-DC schema. By implementing a simple random sampling strategy across a diverse array of source repositories, the collection serves as a statistically representative proxy for the broader metadata landscape. This approach mitigates institutional bias and ensures that subsequent statistical operations—such as quantifying element completion rates or analyzing term frequencies—reflect the actual distribution of metadata quality and practices within the ecosystem. Consequently, the dataset provides a robust empirical foundation for assessing interoperability and \"FAIRness\" at scale, particularly for discovery-level metadata.",
+        "format": "json is the file format. Nevertheless the actual record is in form of an xml-string within the json-file.",
+        "id": "Harvested Test Dataset",
+        "integration": "This would be managed by a provenance server.",
+        "interoperability": "OAI-DC",
+        "metadata": {
+            "creation_automatic": "All metadata is collected automatically.",
+            "quality_assurance": 198,
+            "responsible_person": {
+                "name": "Mohamed-Anis Koubaa"
+            }
+        },
+        "origin": 421,
+        "pids": {
+            "system": 175,
+            "yesno": "1"
+        },
+        "preservation": {
+            "access_authentication": "Helmholtz login.",
+            "certification": "0",
+            "duration": "8 years",
+            "purpose": 164,
+            "repository": "Zenodo",
+            "repository_arrangements": "1",
+            "responsible_person": {
+                "email": "mohamed.koubaa@kit.ed",
+                "name": "Mohamed-Anis Koubaa"
+            },
+            "reuse_duration": "8 years",
+            "yesno": "1"
+        },
+        "quality_assurance": "The sampling procedures are important for the acquisition of this data, the procedure guarantee that the data is representative.",
+        "reproducibility": 410,
+        "sensitive_data": {
+            "other": {
+                "yesno": "0"
+            },
+            "personal_data_yesno": {
+                "yesno": "0"
+            }
+        },
+        "sharing": {
+            "conditions": 433,
+            "repository": "The Information Portal of HMC will host those data.",
+            "yesno": 406
+        },
+        "size": {
+            "volume": 392
+        },
+        "storage": {
+            "naming_policy": 3,
+            "organisation_policy": 4,
+            "type": "codebase will be the container of data, during and after the end of the project."
+        },
+        "uri": "https://data.qa.unhide.helmholtz-metadaten.de/docs",
+        "usage_description": "Several statistical analyses will take place during the project.",
+        "usage_frequency": "Very often, like 20 times per month.",
+        "usage_infrastructure": 215,
+        "usage_support": 1,
+        "versioning_tool": 22,
+        "versioning_yesno": "1"
+    },
+    "legal_aspects": {
+        "international_yesno": "0",
+        "ipr": {
+            "yesno": "0"
+        },
+        "official_approval": {
+            "data_access_committee": "0",
+            "ethics_committee": "Data are publicly available.",
+            "statutatory_approval": {
+                "yesno": 233
+            }
+        }
+    },
+    "partner": {
+        "contact_person": {
+            "name": "Mohamed-Anis Koubaa"
+        },
+        "id": "https://codebase.helmholtz.cloud/mohamed.koubaa",
+        "name": "Mohamed-Anis Koubaa",
+        "rdm_policy": "https://www.uni-goettingen.de/en/488918.html"
+    },
+    "research_field": {
+        "title": 73
+    },
+    "research_question": {
+        "keywords": "Metadata Harmonisation, FAIR Integration, Data Standardization",
+        "title": "The Task Force Harmony aims to improve metadata quality and standardization across Helmholtz data providers to enhance HMC services such as the Knowledge Graph and FAIR Dashboard. The goal is to create a seamless integration of data by harmonizing metadata practices across the Helmholtz ecosystem."
+    },
+    "schedule": {
+        "project_end": "2028-03-21",
+        "project_start": "2026-01-21"
+    }
+}

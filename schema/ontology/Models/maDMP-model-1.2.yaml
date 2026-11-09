@@ -1,0 +1,972 @@
+name: RDA_DMP_Common_Standard_for_machine_actionable_Data_Management_Plans
+id: https://example.org/RDA-DMP-Common-Standard-for-machine-actionable-Data-Management-Plans
+imports:
+- linkml:types
+prefixes:
+  RDA_DMP_Common_Standard_for_machine_actionable_Data_Management_Plans: https://example.org/RDA-DMP-Common-Standard-for-machine-actionable-Data-Management-Plans
+  linkml: https://w3id.org/linkml/
+default_prefix: RDA_DMP_Common_Standard_for_machine_actionable_Data_Management_Plans
+enums:
+  personal_data_options:
+    permissible_values:
+      'yes': {}
+      'no': {}
+      unknown: {}
+  sensitive_data_options:
+    permissible_values:
+      'yes': {}
+      'no': {}
+      unknown: {}
+  type_options:
+    permissible_values:
+      url: {}
+      other: {}
+slots:
+  affiliation_id:
+    range: AffiliationID
+    required: true
+  name:
+    description: Name a resource applied to a dataset
+    required: true
+  identifier:
+    required: true
+  type:
+    description: 'Identifier type. Suggested values: url'
+    required: true
+  affiliation:
+    range: Affiliation
+    multivalued: true
+  contact_id:
+    range: ContactID
+    required: true
+    multivalued: true
+  mbox:
+    description: Creator Mail address
+  contributor_id:
+    range: ContributorID
+    required: true
+    multivalued: true
+  role:
+    range: ContributorRoles
+    required: true
+  items:
+    range: TechnicalResource
+    multivalued: true
+  currency_code:
+    range: CurrencyCode
+  description:
+    description: Describe a technical resource (e.g. tools or software) required for
+      any stage of a dataset lifecycle (e.g. microscopes, sensors, Jupyter Notebook,
+      Galaxy workflows, measuring devices)
+  title:
+    description: Title a measure applied to a dataset
+    required: true
+  value:
+    description: Cost value in the specified currency
+    range: float
+  creator_id:
+    range: CreatorID
+    required: true
+    multivalued: true
+  alternate_identifier:
+    range: AlternateIdentifier
+    multivalued: true
+  creator:
+    range: Creator
+    multivalued: true
+  data_quality_assurance:
+    multivalued: true
+  dataset_id:
+    range: DatasetID
+    required: true
+  distribution:
+    range: Distribution
+    multivalued: true
+  is_reused:
+    description: Indicates if the dataset is reused, i.e., not produced in project(s)
+      covered by this DMP.
+    range: boolean
+  issued:
+    description: To indicate a date when a distribution was published or released.
+      Encoded using the relevant ISO 8601 Date compliant string.
+  keyword:
+    multivalued: true
+  language:
+    range: LanguageCode
+    required: true
+  metadata:
+    range: Metadata
+    multivalued: true
+  personal_data:
+    description: 'To indicate whether a dataset contains personal data. Personal data
+      refers to any data that can identify an individual (e.g. name, birthdate, address,
+      voice recordings, etc.). Allowed values: yes, no, unknown'
+    range: personal_data_options
+    required: true
+  preservation_statement:
+    description: To outline a plan for how and why a dataset will be preserved for
+      long-term access, including for example storage redundancy, integrity checks
+      (checksums, fixity checks), format migration,  and a sustainability plan ensuring
+      institutional commitment and funding.
+  rights:
+    description: A statement that concerns all rights not addressed with license,
+      such as copyright statements.
+  related_identifier:
+    range: RelatedIdentifier
+    multivalued: true
+  security_and_privacy:
+    range: SecurityAndPrivacyItems
+  sensitive_data:
+    description: 'To indicate whether a dataset contains sensitive data. Sensitive
+      data refers to information that could pose risks to individuals or organizations
+      for example  financial information, medical records, passwords and social security
+      numbers. Allowed values: yes, no, unknown'
+    range: sensitive_data_options
+    required: true
+  technical_resource:
+    range: TechnicalResources
+  contact:
+    range: Contact
+    required: true
+  contributor:
+    range: Contributors
+  cost:
+    range: Costs
+  created:
+    description: Date and time of the first version of a DMP. Must not be changed
+      in subsequent DMPs. Encoded using the relevant ISO 8601 Date and Time (with
+      timezone) compliant string.
+    required: true
+  dataset:
+    range: Datasets
+    required: true
+  dmp_id:
+    range: DMPID
+    required: true
+  ethical_issues_description:
+    description: To describe considerations that require compliance with laws and
+      regulations (e.g. GDPR, animal welfare) due to the involvement of humans, animals,
+      or sensitive information. This includes ensuring informed consent from participants,
+      protecting privacy and confidentiality, and adhering to applicable legal and
+      ethical standards throughout the research.
+  ethical_issues_exist:
+    range: Booleanish
+    required: true
+  ethical_issues_report:
+    description: To indicate where a report/document that details all identified ethical
+      issues (might be for example emit from a meeting with an ethical committee),
+      preferably in URL format
+  modified:
+    description: Must be set each time DMP is modified. Indicates a DMP version. Encoded
+      using the relevant ISO 8601 Date and Time (with timezone) compliant string.
+    required: true
+  project:
+    range: Project
+    multivalued: true
+  access_url:
+    description: A URL of the resource that gives access to a distribution of the
+      dataset. e.g. landing page.
+  available_until:
+    description: Indicates how long this distribution will be/ should be available.
+      Encoded using the relevant ISO 8601 Date compliant string.
+  byte_size:
+    description: Size in bytes.
+    range: integer
+  data_access:
+    range: DataAccess
+    required: true
+  download_url:
+    description: The URL of the downloadable file in a given format. E.g. CSV file
+      or RDF file.
+  format:
+    range: MIMEType
+    multivalued: true
+  host:
+    range: Host
+  license:
+    range: Licenses
+  funder_id:
+    range: FunderID
+    required: true
+  funding_status:
+    range: FundingStatus
+  grant_id:
+    range: GrantID
+  availability:
+    description: Availability of a host (preferably as a percentage)
+  backup_frequency:
+    description: Frequency of backups provided by a host
+  backup_type:
+    description: Location and/or type of the backup provided by a host
+  certified_with:
+    range: Certification
+  geo_location:
+    range: CountryCode
+  host_id:
+    range: HostID
+    multivalued: true
+  pid_system:
+    range: PIDSystems
+  storage_type:
+    description: To indicate whether a host supports versioning of data distributions.
+  support_versioning:
+    range: Booleanish
+  url:
+    description: A URL of an infrastructure hosting a distribution of a dataset
+    required: true
+  license_ref:
+    description: Link to license document.
+    required: true
+  start_date:
+    description: If date is set in the future, it indicates embargo period. Encoded
+      using the relevant ISO 8601 Date compliant string.
+    required: true
+  metadata_standard_id:
+    range: MetadataStandardID
+    required: true
+    multivalued: true
+  end:
+    description: Project end date. Encoded using the relevant ISO 8601 Date compliant
+      string
+  funding:
+    range: Fundings
+  project_id:
+    range: ProjectID
+    multivalued: true
+  start:
+    description: Project start date. Encoded using the relevant ISO 8601 Date compliant
+      string
+  metadata_scheme:
+    description: Name of the related metadata schema (if applicable)
+  relation_type:
+    description: 'Type of relation between the resource and the related resource,
+      suggested values from DataCite relationType: https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relationType/'
+    required: true
+  resource_type:
+    description: 'Type of the related resource, suggested values from DataCite resourceTypeGeneral:
+      https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/resourceTypeGeneral/'
+  scheme_type:
+    description: Type of the related metadata scheme linked with scheme URI (if applicable)
+  scheme_uri:
+    description: Link to the scheme of the identifier (if applicable)
+  technical_resource_id:
+    range: TechnicalResourceID
+    multivalued: true
+  dmp:
+    range: DMPData
+    required: true
+classes:
+  Affiliation:
+    slots:
+    - affiliation_id
+    - name
+    slot_usage:
+      affiliation_id:
+        range: AffiliationID
+        required: true
+      name:
+        description: Name of the affiliation
+        required: true
+  AffiliationID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested Values: ror, grid, isni, other'
+        required: true
+  AlternateIdentifier:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        description: Alternate identifier value
+        required: true
+      type:
+        description: Type of alternate identifier
+        required: true
+  Booleanish:
+    description: 'To indicate whether there are ethical issues related to data that
+      this DMP describes. Allowed values: yes, no, unknown'
+  Certification:
+    description: 'Repository certified to a recognised standard. Allowed values: din31644,
+      dini-zertifikat, dsa, iso16363, iso16919, trac, wds, coretrustseal'
+  Contact:
+    description: Specifies the party which can provide any information on the DMP.
+      This is not necessarily the DMP creator, and can be a person or an organisation.
+    slots:
+    - affiliation
+    - contact_id
+    - mbox
+    - name
+    slot_usage:
+      affiliation:
+        range: Affiliation
+        multivalued: true
+      contact_id:
+        range: ContactID
+        required: true
+        multivalued: true
+      mbox:
+        description: Contact Person's E-mail address
+        required: true
+      name:
+        description: Name of the contact person
+        required: true
+  ContactID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: orcid, isni, openid'
+        required: true
+  Contributor:
+    slots:
+    - affiliation
+    - contributor_id
+    - mbox
+    - name
+    - role
+    slot_usage:
+      affiliation:
+        range: Affiliation
+        multivalued: true
+      contributor_id:
+        range: ContributorID
+        required: true
+        multivalued: true
+      mbox:
+        description: E-mail address for a contributor
+      name:
+        description: Name of the contributor
+        required: true
+      role:
+        range: ContributorRoles
+        required: true
+  ContributorID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: orcid, isni, openid'
+        required: true
+  ContributorRole:
+    description: Contributors role(s) within the process of data management (incl.
+      planning). It is recommended to use contributor types of DataCite Metadata Schema
+      (https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/contributorType/).
+  ContributorRoles:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: ContributorRole
+        multivalued: true
+  Contributors:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: Contributor
+        multivalued: true
+  Cost:
+    slots:
+    - currency_code
+    - description
+    - title
+    - value
+    slot_usage:
+      currency_code:
+        range: CurrencyCode
+      description:
+        description: To provide additional details about a cost, including specifying
+          which activities or resources it relates to, such as making data FAIR, ensuring
+          data accessibility, or enhancing its reusability.
+      title:
+        description: Title of a cost
+        required: true
+      value:
+        description: Cost value in the specified currency
+        range: float
+  Costs:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: Cost
+        multivalued: true
+  Creator:
+    slots:
+    - affiliation
+    - creator_id
+    - mbox
+    - name
+    slot_usage:
+      affiliation:
+        range: Affiliation
+        multivalued: true
+      creator_id:
+        range: CreatorID
+        required: true
+        multivalued: true
+      mbox:
+        description: Creator Mail address
+      name:
+        description: Name of the creator
+        required: true
+  CreatorID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: orcid, isni, openid'
+        required: true
+  CurrencyCode:
+    description: Allowed values defined by ISO 4217
+  CountryCode:
+    description: Physical location of the data expressed using ISO 3166-1 country
+      code.
+  DataAccess:
+    description: 'Indicates access mode for data. Allowed values: open, shared, closed'
+  Dataset:
+    slots:
+    - alternate_identifier
+    - creator
+    - data_quality_assurance
+    - dataset_id
+    - description
+    - distribution
+    - is_reused
+    - issued
+    - keyword
+    - language
+    - metadata
+    - personal_data
+    - preservation_statement
+    - rights
+    - related_identifier
+    - security_and_privacy
+    - sensitive_data
+    - technical_resource
+    - title
+    - type
+    slot_usage:
+      alternate_identifier:
+        range: AlternateIdentifier
+        multivalued: true
+      creator:
+        range: Creator
+        multivalued: true
+      data_quality_assurance:
+        multivalued: true
+      dataset_id:
+        range: DatasetID
+        required: true
+      description:
+        description: Description is a property in both Dataset and Distribution, in
+          compliance with W3C DCAT. In some cases these might be identical, but in
+          most cases the Dataset represents a more abstract concept, while the distribution
+          can point to a specific file.
+      distribution:
+        range: Distribution
+        multivalued: true
+      is_reused:
+        description: Indicates if the dataset is reused, i.e., not produced in project(s)
+          covered by this DMP.
+        range: boolean
+      issued:
+        description: To indicate a date when a dataset was published or released.
+          Encoded using the relevant ISO 8601 Date compliant string.
+      keyword:
+        multivalued: true
+      language:
+        range: LanguageCode
+      metadata:
+        range: Metadata
+        multivalued: true
+      personal_data:
+        description: 'To indicate whether a dataset contains personal data. Personal
+          data refers to any data that can identify an individual (e.g. name, birthdate,
+          address, voice recordings, etc.). Allowed values: yes, no, unknown'
+        range: personal_data_options
+        required: true
+      preservation_statement:
+        description: To outline a plan for how and why a dataset will be preserved
+          for long-term access, including for example storage redundancy, integrity
+          checks (checksums, fixity checks), format migration,  and a sustainability
+          plan ensuring institutional commitment and funding.
+      rights:
+        description: A statement that concerns all rights not addressed with license,
+          such as copyright statements.
+      related_identifier:
+        range: RelatedIdentifier
+        multivalued: true
+      security_and_privacy:
+        range: SecurityAndPrivacyItems
+      sensitive_data:
+        description: 'To indicate whether a dataset contains sensitive data. Sensitive
+          data refers to information that could pose risks to individuals or organizations
+          for example  financial information, medical records, passwords and social
+          security numbers. Allowed values: yes, no, unknown'
+        range: sensitive_data_options
+        required: true
+      technical_resource:
+        range: TechnicalResources
+      title:
+        description: Title is a property in both Dataset and Distribution, in compliance
+          with W3C DCAT. In some cases these might be identical, but in most cases
+          the Dataset represents a more abstract concept, while the distribution can
+          point to a specific file.
+        required: true
+      type:
+        description: 'If appropriate, type according to: DataCite and/or COAR dictionary.
+          Otherwise use the common name for the type, e.g. raw data, software, survey,
+          etc. https://schema.datacite.org/meta/kernel-4.1/doc/DataCite-MetadataKernel_v4.1.pdf
+          http://vocabularies.coar-repositories.org/pubby/resource_type.html'
+  DatasetID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Dataset identifier type. Suggested values: handle, doi, ark,
+          url'
+        required: true
+  Datasets:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: Dataset
+        multivalued: true
+  DMPData:
+    description: Provides high level information about the DMP, e.g. its title, modification
+      date, etc. It is the root of this application profile. The majority of its fields
+      are mandatory.
+    slots:
+    - alternate_identifier
+    - contact
+    - contributor
+    - cost
+    - created
+    - dataset
+    - description
+    - dmp_id
+    - ethical_issues_description
+    - ethical_issues_exist
+    - ethical_issues_report
+    - language
+    - modified
+    - project
+    - related_identifier
+    - title
+    slot_usage:
+      alternate_identifier:
+        range: AlternateIdentifier
+        multivalued: true
+      contact:
+        range: Contact
+        required: true
+      contributor:
+        range: Contributors
+      cost:
+        range: Costs
+      created:
+        description: Date and time of the first version of a DMP. Must not be changed
+          in subsequent DMPs. Encoded using the relevant ISO 8601 Date and Time (with
+          timezone) compliant string.
+        required: true
+      dataset:
+        range: Datasets
+        required: true
+      description:
+        description: Any text related to this DMP, optionally describing the project.
+          It can include important information that doesn't fit elsewhere.
+      dmp_id:
+        range: DMPID
+        required: true
+      ethical_issues_description:
+        description: To describe considerations that require compliance with laws
+          and regulations (e.g. GDPR, animal welfare) due to the involvement of humans,
+          animals, or sensitive information. This includes ensuring informed consent
+          from participants, protecting privacy and confidentiality, and adhering
+          to applicable legal and ethical standards throughout the research.
+      ethical_issues_exist:
+        range: Booleanish
+        required: true
+      ethical_issues_report:
+        description: To indicate where a report/document that details all identified
+          ethical issues (might be for example emit from a meeting with an ethical
+          committee), preferably in URL format
+      language:
+        range: LanguageCode
+        required: true
+      modified:
+        description: Must be set each time DMP is modified. Indicates a DMP version.
+          Encoded using the relevant ISO 8601 Date and Time (with timezone) compliant
+          string.
+        required: true
+      project:
+        range: Project
+        multivalued: true
+      related_identifier:
+        range: RelatedIdentifier
+        multivalued: true
+      title:
+        description: Title of a DMP
+        required: true
+  DMPID:
+    description: Identifier for the DMP itself
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'The DMP Identifier Type. Suggested values: handle, doi, ark,
+          url'
+        required: true
+  Distribution:
+    slots:
+    - access_url
+    - available_until
+    - byte_size
+    - data_access
+    - description
+    - download_url
+    - format
+    - host
+    - issued
+    - license
+    - title
+    slot_usage:
+      access_url:
+        description: A URL of the resource that gives access to a distribution of
+          the dataset. e.g. landing page.
+      available_until:
+        description: Indicates how long this distribution will be/ should be available.
+          Encoded using the relevant ISO 8601 Date compliant string.
+      byte_size:
+        description: Size in bytes.
+        range: integer
+      data_access:
+        range: DataAccess
+        required: true
+      description:
+        description: Description is a property in both Dataset and Distribution, in
+          compliance with W3C DCAT. In some cases these might be identical, but in
+          most cases the Dataset represents a more abstract concept, while the distribution
+          can point to a specific file.
+      download_url:
+        description: The URL of the downloadable file in a given format. E.g. CSV
+          file or RDF file.
+      format:
+        range: MIMEType
+        multivalued: true
+      host:
+        range: Host
+      issued:
+        description: To indicate a date when a distribution was published or released.
+          Encoded using the relevant ISO 8601 Date compliant string.
+      license:
+        range: Licenses
+      title:
+        description: Title is a property in both Dataset and Distribution, in compliance
+          with W3C DCAT. In some cases these might be identical, but in most cases
+          the Dataset represents a more abstract concept, while the distribution can
+          point to a specific file.
+        required: true
+  FunderID:
+    description: Funder ID of the associated project
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        description: 'Funder ID, recommended to use CrossRef Funder Registry. See:
+          https://www.crossref.org/services/funder-registry/'
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: fundref, url'
+        required: true
+  Funding:
+    slots:
+    - funder_id
+    - funding_status
+    - grant_id
+    slot_usage:
+      funder_id:
+        range: FunderID
+        required: true
+      funding_status:
+        range: FundingStatus
+      grant_id:
+        range: GrantID
+  Fundings:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: Funding
+        multivalued: true
+  FundingStatus:
+    description: 'To express different phases of project lifecycle. Allowed values:
+      planned, applied, granted, rejected'
+  GrantID:
+    description: Grant ID of the associated project
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: url'
+        required: true
+  Host:
+    description: To provide information on quality of service provided by infrastructure
+      (e.g. repository) where data is stored.
+    slots:
+    - availability
+    - backup_frequency
+    - backup_type
+    - certified_with
+    - description
+    - geo_location
+    - host_id
+    - pid_system
+    - storage_type
+    - support_versioning
+    - title
+    - url
+    slot_usage:
+      availability:
+        description: Availability of a host (preferably as a percentage)
+      backup_frequency:
+        description: Frequency of backups provided by a host
+      backup_type:
+        description: Location and/or type of the backup provided by a host
+      certified_with:
+        range: Certification
+      description: {}
+      geo_location:
+        range: CountryCode
+      host_id:
+        range: HostID
+        multivalued: true
+      pid_system:
+        range: PIDSystems
+      storage_type:
+        description: To indicate whether a host supports versioning of data distributions.
+      support_versioning:
+        range: Booleanish
+      title:
+        required: true
+      url:
+        description: A URL of an infrastructure hosting a distribution of a dataset
+        required: true
+  HostID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: url'
+        required: true
+  MIMEType: {}
+  LanguageCode:
+    description: Language of the metadata expressed using ISO 639-3.
+  License:
+    slots:
+    - license_ref
+    - start_date
+    slot_usage:
+      license_ref:
+        description: Link to license document.
+        required: true
+      start_date:
+        description: If date is set in the future, it indicates embargo period. Encoded
+          using the relevant ISO 8601 Date compliant string.
+        required: true
+  Licenses:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: License
+        multivalued: true
+  Metadata:
+    slots:
+    - description
+    - language
+    - metadata_standard_id
+    slot_usage:
+      description:
+        description: To provide any details on the choice of the metadata standard
+      language:
+        range: LanguageCode
+        required: true
+      metadata_standard_id:
+        range: MetadataStandardID
+        required: true
+        multivalued: true
+  MetadataStandardID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: url'
+        range: type_options
+        required: true
+  PIDSystems:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: PIDSystemType
+        multivalued: true
+  PIDSystemType: {}
+  Project:
+    slots:
+    - description
+    - end
+    - funding
+    - project_id
+    - start
+    - title
+    slot_usage:
+      description:
+        description: Project abstract providing an overview of the project's goals
+          and scope
+      end:
+        description: Project end date. Encoded using the relevant ISO 8601 Date compliant
+          string
+      funding:
+        range: Fundings
+      project_id:
+        range: ProjectID
+        multivalued: true
+      start:
+        description: Project start date. Encoded using the relevant ISO 8601 Date
+          compliant string
+      title:
+        description: Project title
+        required: true
+  ProjectID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: doi, raid, url'
+        required: true
+  RelatedIdentifier:
+    slots:
+    - identifier
+    - metadata_scheme
+    - relation_type
+    - resource_type
+    - scheme_type
+    - scheme_uri
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      metadata_scheme:
+        description: Name of the related metadata schema (if applicable)
+      relation_type:
+        description: 'Type of relation between the resource and the related resource,
+          suggested values from DataCite relationType: https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relationType/'
+        required: true
+      resource_type:
+        description: 'Type of the related resource, suggested values from DataCite
+          resourceTypeGeneral: https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/resourceTypeGeneral/'
+      scheme_type:
+        description: Type of the related metadata scheme linked with scheme URI (if
+          applicable)
+      scheme_uri:
+        description: Link to the scheme of the identifier (if applicable)
+      type:
+        description: 'Type of the identifier, suggested values from DataCite relatedIdentifierType:
+          https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relatedIdentifierType/'
+        required: true
+  SecurityAndPrivacyItem:
+    slots:
+    - description
+    - title
+    slot_usage:
+      description:
+        description: Describe a security and privacy measure applied to a dataset
+          to protect sensitive information
+      title:
+        description: Title a measure applied to a dataset
+        required: true
+  SecurityAndPrivacyItems:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: SecurityAndPrivacyItem
+        multivalued: true
+  TechnicalResource:
+    slots:
+    - description
+    - name
+    - technical_resource_id
+    slot_usage:
+      description:
+        description: Describe a technical resource (e.g. tools or software) required
+          for any stage of a dataset lifecycle (e.g. microscopes, sensors, Jupyter
+          Notebook, Galaxy workflows, measuring devices)
+      name:
+        description: Name a resource applied to a dataset
+        required: true
+      technical_resource_id:
+        range: TechnicalResourceID
+        multivalued: true
+  TechnicalResourceID:
+    slots:
+    - identifier
+    - type
+    slot_usage:
+      identifier:
+        required: true
+      type:
+        description: 'Identifier type. Suggested values: url'
+        required: true
+  TechnicalResources:
+    slots:
+    - items
+    slot_usage:
+      items:
+        range: TechnicalResource
+        multivalued: true
+  RDADMPCommonStandardForMachine-actionableDataManagementPlans:
+    slots:
+    - dmp
+    slot_usage:
+      dmp:
+        range: DMPData
+        required: true
+

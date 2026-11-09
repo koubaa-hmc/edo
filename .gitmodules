@@ -1,6 +1,3 @@
-[submodule "schema/ontology"]
-	path = schema/ontology
-	url = git@github.com:EnergyDataOrchestrator/regimo-ontology.git
 [submodule "components/socket-rdmo"]
 	path = components/socket-rdmo
 	url = git@github.com:EnergyDataOrchestrator/socket-rdmo.git

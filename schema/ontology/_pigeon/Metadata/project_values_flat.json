@@ -1,0 +1,246 @@
+[
+    {
+        "path": "project/additional_rdm_policy/yesno",
+        "value": 186
+    },
+    {
+        "path": "project/coordination/name",
+        "value": "https://codebase.helmholtz.cloud/oonagh.mannix"
+    },
+    {
+        "path": "project/dataset/collaboration_organisation",
+        "value": "Codebase is intensively used in this context."
+    },
+    {
+        "path": "project/dataset/collaboration_tools",
+        "value": "Codebase is intensively used in this context."
+    },
+    {
+        "path": "project/dataset/collaboration_yesno",
+        "value": 453
+    },
+    {
+        "path": "project/dataset/creator/name",
+        "value": "The data set is provided by the Helmholtz Knowledge Graph Team."
+    },
+    {
+        "path": "project/dataset/description",
+        "value": "This dataset represents a heterogeneous aggregation of metadata records, harvested via the OAI-PMH protocol and constrained to the OAI-DC schema. By implementing a simple random sampling strategy across a diverse array of source repositories, the collection serves as a statistically representative proxy for the broader metadata landscape. This approach mitigates institutional bias and ensures that subsequent statistical operations—such as quantifying element completion rates or analyzing term frequencies—reflect the actual distribution of metadata quality and practices within the ecosystem. Consequently, the dataset provides a robust empirical foundation for assessing interoperability and \"FAIRness\" at scale, particularly for discovery-level metadata."
+    },
+    {
+        "path": "project/dataset/format",
+        "value": "json is the file format. Nevertheless the actual record is in form of an xml-string within the json-file."
+    },
+    {
+        "path": "project/dataset/id",
+        "value": "Harvested Test Dataset"
+    },
+    {
+        "path": "project/dataset/integration",
+        "value": "This would be managed by a provenance server."
+    },
+    {
+        "path": "project/dataset/interoperability",
+        "value": "OAI-DC"
+    },
+    {
+        "path": "project/dataset/metadata/creation_automatic",
+        "value": "All metadata is collected automatically."
+    },
+    {
+        "path": "project/dataset/metadata/quality_assurance",
+        "value": 198
+    },
+    {
+        "path": "project/dataset/metadata/responsible_person/name",
+        "value": "Mohamed-Anis Koubaa"
+    },
+    {
+        "path": "project/dataset/origin",
+        "value": 421
+    },
+    {
+        "path": "project/dataset/pids/system",
+        "value": 175
+    },
+    {
+        "path": "project/dataset/pids/yesno",
+        "value": "1"
+    },
+    {
+        "path": "project/dataset/preservation/access_authentication",
+        "value": "Helmholtz login."
+    },
+    {
+        "path": "project/dataset/preservation/certification",
+        "value": "0"
+    },
+    {
+        "path": "project/dataset/preservation/duration",
+        "value": "8 years"
+    },
+    {
+        "path": "project/dataset/preservation/purpose",
+        "value": 167
+    },
+    {
+        "path": "project/dataset/preservation/purpose",
+        "value": 166
+    },
+    {
+        "path": "project/dataset/preservation/purpose",
+        "value": 164
+    },
+    {
+        "path": "project/dataset/preservation/repository",
+        "value": "Zenodo"
+    },
+    {
+        "path": "project/dataset/preservation/repository_arrangements",
+        "value": "1"
+    },
+    {
+        "path": "project/dataset/preservation/responsible_person/email",
+        "value": "mohamed.koubaa@kit.ed"
+    },
+    {
+        "path": "project/dataset/preservation/responsible_person/name",
+        "value": "Mohamed-Anis Koubaa"
+    },
+    {
+        "path": "project/dataset/preservation/reuse_duration",
+        "value": "8 years"
+    },
+    {
+        "path": "project/dataset/preservation/yesno",
+        "value": "1"
+    },
+    {
+        "path": "project/dataset/quality_assurance",
+        "value": "The sampling procedures are important for the acquisition of this data, the procedure guarantee that the data is representative."
+    },
+    {
+        "path": "project/dataset/reproducibility",
+        "value": 410
+    },
+    {
+        "path": "project/dataset/sensitive_data/other/yesno",
+        "value": "0"
+    },
+    {
+        "path": "project/dataset/sensitive_data/personal_data_yesno/yesno",
+        "value": "0"
+    },
+    {
+        "path": "project/dataset/sharing/conditions",
+        "value": 433
+    },
+    {
+        "path": "project/dataset/sharing/repository",
+        "value": "The Information Portal of HMC will host those data."
+    },
+    {
+        "path": "project/dataset/sharing/yesno",
+        "value": 406
+    },
+    {
+        "path": "project/dataset/size/volume",
+        "value": 392
+    },
+    {
+        "path": "project/dataset/storage/naming_policy",
+        "value": 3
+    },
+    {
+        "path": "project/dataset/storage/organisation_policy",
+        "value": 4
+    },
+    {
+        "path": "project/dataset/storage/type",
+        "value": "codebase will be the container of data, during and after the end of the project."
+    },
+    {
+        "path": "project/dataset/uri",
+        "value": "https://data.qa.unhide.helmholtz-metadaten.de/docs"
+    },
+    {
+        "path": "project/dataset/usage_description",
+        "value": "Several statistical analyses will take place during the project."
+    },
+    {
+        "path": "project/dataset/usage_frequency",
+        "value": "Very often, like 20 times per month."
+    },
+    {
+        "path": "project/dataset/usage_infrastructure",
+        "value": 215
+    },
+    {
+        "path": "project/dataset/usage_support",
+        "value": 1
+    },
+    {
+        "path": "project/dataset/versioning_tool",
+        "value": 22
+    },
+    {
+        "path": "project/dataset/versioning_yesno",
+        "value": "1"
+    },
+    {
+        "path": "project/legal_aspects/international_yesno",
+        "value": "0"
+    },
+    {
+        "path": "project/legal_aspects/ipr/yesno",
+        "value": "0"
+    },
+    {
+        "path": "project/legal_aspects/official_approval/data_access_committee",
+        "value": "0"
+    },
+    {
+        "path": "project/legal_aspects/official_approval/ethics_committee",
+        "value": "Data are publicly available."
+    },
+    {
+        "path": "project/legal_aspects/official_approval/statutatory_approval/yesno",
+        "value": 233
+    },
+    {
+        "path": "project/partner/contact_person/name",
+        "value": "Mohamed-Anis Koubaa"
+    },
+    {
+        "path": "project/partner/id",
+        "value": "https://codebase.helmholtz.cloud/mohamed.koubaa"
+    },
+    {
+        "path": "project/partner/name",
+        "value": "Mohamed-Anis Koubaa"
+    },
+    {
+        "path": "project/partner/rdm_policy",
+        "value": "https://www.uni-goettingen.de/en/488918.html"
+    },
+    {
+        "path": "project/research_field/title",
+        "value": 73
+    },
+    {
+        "path": "project/research_question/keywords",
+        "value": "Metadata Harmonisation, FAIR Integration, Data Standardization"
+    },
+    {
+        "path": "project/research_question/title",
+        "value": "The Task Force Harmony aims to improve metadata quality and standardization across Helmholtz data providers to enhance HMC services such as the Knowledge Graph and FAIR Dashboard. The goal is to create a seamless integration of data by harmonizing metadata practices across the Helmholtz ecosystem."
+    },
+    {
+        "path": "project/schedule/project_end",
+        "value": "2028-03-21"
+    },
+    {
+        "path": "project/schedule/project_start",
+        "value": "2026-01-21"
+    }
+]
