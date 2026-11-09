@@ -1,8 +1,0 @@
-requests>=2.21.0
-simplejson>=3.16.0
-
-[dev]
-build
-pre-commit
-ruff
-twine
