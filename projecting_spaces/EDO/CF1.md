@@ -15,8 +15,8 @@ Main sources of information are (as validated by FeadO feasibility study):
   *✓ Validated: Semantic context integration*
 
 ## FeadO Validation Status
-- ✅ **Sources integration pattern validated** in FeadO feasibility study (2025-08-15)
-- ✅ **Data access patterns confirmed** as critical for CF1 implementation
+- **Sources integration pattern validated** in FeadO feasibility study (2025-08-15)
+- **Data access patterns confirmed** as critical for CF1 implementation
 
 Not all sources are always available.
 

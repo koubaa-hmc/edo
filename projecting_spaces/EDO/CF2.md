@@ -16,9 +16,9 @@ The gathered information should be consumed by different subcomponents ([[RDMO]]
 - **Schema mapping procedures** validated in FeadO technical analysis
 
 ### Subcomponent Integration Pattern from FeadO Study
-- [✅] **RDMO Integration** - Automated mapping workflows added per FeadO §5.2
+- [x] **RDMO Integration** - Automated mapping workflows added per FeadO §5.2
 - [ ] **ELN Interface** - Direct integration with Electronic Lab Notebooks (FeadO §6.1)
-- [✅] **Knowledge Graph Bridge** - Semantic transformations validated in FeadO §8.2
+- [x] **Knowledge Graph Bridge** - Semantic transformations validated in FeadO §8.2
 - [ ] **API Clients** - Plugin-based architecture (FeadO §9.1 recommendation
 
 ### Platform-Specific Transformations (Derived from FeadO Study)
@@ -30,8 +30,8 @@ Different target platforms have different schema, standards and [[Vocabular]]ies
 ## Internal Knowledge Graph Implementation
 
 EDO must generate and maintain its own internal Knowledge Graph ([[iKG]]) as validated in the FeadO feasibility study:
-- ✅ **Implementation Status**: RO-Crate-based iKG confirmed feasible (FeadO §7.2)
-- ✅ **Transformation Engine**: Semantic expansion validated (FeadO Technical Review)
+- **Implementation Status**: RO-Crate-based iKG confirmed feasible (FeadO §7.2)
+- **Transformation Engine**: Semantic expansion validated (FeadO Technical Review)
 
 > The iKG serves as the foundation for all downstream transformations and platform-specific presentations validated in FeadO feasibility study.
 
@@ -41,10 +41,10 @@ EDO must generate and maintain its own internal Knowledge Graph ([[iKG]]) as val
 
 | Platform | Target Standard | iKG Transformation | Status |
 |----------|----------------|-------------------|--------|
-| maDMP-lightmodel | RO-Crate 1.1 | Transform to RO-Crate | ✅ Validated |
-| Research Data Platform | Schema.org | Automated mapping | ✅ Validated |
-| Sensor Database | QUDT/SSN | Physics-aware transformation | ⏳ Pending |
-| ELN integration | PROV-O | Provenance capture | ⏳ Pending |
+| maDMP-lightmodel | RO-Crate 1.1 | Transform to RO-Crate | Validated |
+| Research Data Platform | Schema.org | Automated mapping | Validated |
+| Sensor Database | QUDT/SSN | Physics-aware transformation | Pending |
+| ELN integration | PROV-O | Provenance capture | Pending |
 
 **Derived from**: FeadO Technical Specification tables 3.4-3.7
 
@@ -54,7 +54,7 @@ EDO must generate and maintain its own internal Knowledge Graph ([[iKG]]) as val
 - [x] Implement RO-Crate as primary container format
 - [x] Identity management and provenance tracking
 - [x] Context-aware metadata enrichment
-- Status: ✅ FeadO validated (Technical Review D-2025-09-15)
+- Status: FeadO validated (Technical Review D-2025-09-15)
 
 ### Phase 2: Platform-Specific Transformations (In Progress)
 - [ ] Transform iKG → Target platform format (FeadO §9.4 patterns)
