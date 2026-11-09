@@ -1,0 +1,11 @@
+{
+  "name": "user-check",
+  "viewBox": "0 0 24 24",
+  "width": 24,
+  "height": 24,
+  "tags": ["user check"],
+  "paths": [
+    "m16 11 2 2 4-4
+M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+  ]
+}

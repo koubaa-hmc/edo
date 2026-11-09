@@ -1,0 +1,1 @@
+- Is an exchange mechanism for information and events in the system.

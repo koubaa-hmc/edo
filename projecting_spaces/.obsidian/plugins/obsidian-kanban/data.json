@@ -1,0 +1,24 @@
+{
+  "new-card-insertion-method": "append",
+  "new-note-template": "EDO/Organisation/Connected Note.md",
+  "new-note-folder": "EDO/Artefacts/Cards",
+  "show-checkboxes": false,
+  "tag-colors": [
+    {
+      "tagKey": "#priority/republic",
+      "color": "",
+      "backgroundColor": ""
+    }
+  ],
+  "show-relative-date": true,
+  "link-date-to-daily-note": true,
+  "inline-metadata-position": "footer",
+  "date-colors": [
+    {
+      "isToday": false,
+      "distance": 1,
+      "unit": "days",
+      "direction": "after"
+    }
+  ]
+}

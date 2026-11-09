@@ -1,0 +1,36 @@
+
+Machbarkeitstudie EDO
+
+
+
+Aufgabe: Entwicklung von zwei Beispielen, mit denen der gesamte Zyklus exemplarisch auf die Machbarkeit geprüft wird. Dazu wird ein high level DMP (Projektantrag) und ein low level Beispiel (Messreihe) verwendet. 
+Im ersten Schritt beginnen wir mit dem low level Beispiel, welches einen DMP mit einer Sensorbeschreibung kombiniert, in NovaCrate ergänzt und danach die Metadaten auf der OEP veröffentlicht.
+Danach werden die ganzen Schritte mit dem high level Beispiel wiederholt. 
+
+Definition eines low level Beispiels
+Entwicklung eines kleinen, überschaubaren Beispiel Szenarios z.B. für eine Messreihe.  
+DMP Erstellung
+Mit Hilfe des RDMO wird ein einfacher DMP erstellt und präsentiert
+SMS Beschreibung
+Benutzung eines in SMS beschriebenen Sensors
+Internes Format Beschreibung
+Grobe Beschreibung eines möglichen internen Formats.
+LinkML Beschreibung
+Beispielhafte linkML Beschreibungen für den DMP,   SMS und das interne Format, nur grob Prinzip, so dass man später die Transformation versteht.
+Transformationen 
+Beschreibung der Transformationen von DMP und SMS in das interne Format. 
+LinkjML Map
+Ein LinkML Map Beispiel für die Transformation in das interne Format
+Verknüpfung DMP und SMS
+Wo geschieht die Verknüpfung von DMP und SMS? 
+Wie sieht diese Verknüpfung aus? 
+Generierung RO Crate
+Erzeugung RO Crate aus dem internen Format
+NovaCrate
+Laden des RO Crate in NovaCrate und bearbeiten des RO Crate. 
+Wie kommen die Änderungen zurück  (internes Format, RDMO?)
+Veröffentlichung in Zielrepository, z.B.  OEP
+Transformation des internen Formats in OEP.  Was ist dazu notwendig und wie sieht es dann auf der OEP aus? 
+LinkML Map Beispiel für die Transformation in das Zielrepository
+
+Wiederholung der Schritte 1 bis 11 für das high level Beispiel
