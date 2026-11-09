@@ -1,0 +1,183 @@
+{
+  "access": {
+    "embargo": {
+      "active": false,
+      "reason": null
+    },
+    "files": "public",
+    "record": "public",
+    "status": "metadata-only"
+  },
+  "created": "2026-08-31T12:14:13.635463+00:00",
+  "custom_fields": {},
+  "deletion_status": {
+    "is_deleted": false,
+    "status": "P"
+  },
+  "expires_at": null,
+  "files": {
+    "count": 0,
+    "enabled": false,
+    "entries": {},
+    "order": [],
+    "total_bytes": 0
+  },
+  "id": "g2e97-6yw90",
+  "is_draft": false,
+  "is_published": true,
+  "links": {
+    "access": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/access",
+    "access_grants": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/access/grants",
+    "access_groups": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/access/groups",
+    "access_links": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/access/links",
+    "access_request": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/access/request",
+    "access_users": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/access/users",
+    "archive": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/files-archive",
+    "archive_media": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/media-files-archive",
+    "communities": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/communities",
+    "communities-suggestions": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/communities-suggestions",
+    "draft": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/draft",
+    "files": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/files",
+    "latest": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/versions/latest",
+    "latest_html": "https://b2inst.gwdg.de/records/g2e97-6yw90/latest",
+    "media_files": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/media-files",
+    "parent": "https://b2inst.gwdg.de/api/records/arw2q-xfz82",
+    "parent_html": "https://b2inst.gwdg.de/records/arw2q-xfz82",
+    "preview_html": "https://b2inst.gwdg.de/records/g2e97-6yw90?preview=1",
+    "requests": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/requests",
+    "reserve_doi": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/draft/pids/doi",
+    "self": "https://b2inst.gwdg.de/api/records/g2e97-6yw90",
+    "self_html": "https://b2inst.gwdg.de/records/g2e97-6yw90",
+    "self_iiif_manifest": "https://b2inst.gwdg.de/api/iiif/record:g2e97-6yw90/manifest",
+    "self_iiif_sequence": "https://b2inst.gwdg.de/api/iiif/record:g2e97-6yw90/sequence/default",
+    "versions": "https://b2inst.gwdg.de/api/records/g2e97-6yw90/versions"
+  },
+  "media_files": {
+    "count": 0,
+    "enabled": false,
+    "entries": {},
+    "order": [],
+    "total_bytes": 0
+  },
+  "metadata": {
+    "AlternateIdentifier": [
+      {
+        "alternateIdentifierType": "SerialNumber",
+        "alternateIdentifierValue": "425154515"
+      },
+      {
+        "alternateIdentifierName": "URL",
+        "alternateIdentifierType": "Other",
+        "alternateIdentifierValue": "https://sms.atmohub.kit.edu/devices/1112"
+      }
+    ],
+    "Description": "",
+    "Identifier": {
+      "identifierType": "Handle",
+      "identifierValue": "21.11157/g2e97-6yw90"
+    },
+    "LandingPage": "https://sms.atmohub.kit.edu/devices/1112",
+    "Manufacturer": [
+      {
+        "manufacturerName": ":unav"
+      }
+    ],
+    "Name": "Mutimeter - 425154515",
+    "Owner": [
+      {
+        "ownerIdentifier": {
+          "ownerIdentifierType": "Other",
+          "ownerIdentifierValue": "ror.org/04t3en479"
+        },
+        "ownerName": "Karlsruhe Institute of Technology (KIT)"
+      }
+    ],
+    "SchemaVersion": "1.0",
+    "community_extension": {}
+  },
+  "parent": {
+    "access": {
+      "owned_by": {
+        "user": "78"
+      },
+      "settings": {
+        "accept_conditions_text": null,
+        "allow_guest_requests": false,
+        "allow_user_requests": false,
+        "secret_link_expiration": 0
+      }
+    },
+    "communities": {
+      "default": "65084a2d-7819-4b0b-a250-0f48002792b5",
+      "entries": [
+        {
+          "access": {
+            "member_policy": "open",
+            "members_visibility": "public",
+            "record_restricted_policy": "restricted",
+            "record_submission_policy": "closed",
+            "review_policy": "members",
+            "visibility": "public"
+          },
+          "children": {
+            "allow": false
+          },
+          "created": "2026-03-02T11:03:49.865397+00:00",
+          "custom_fields": {},
+          "deletion_status": {
+            "is_deleted": false,
+            "status": "P"
+          },
+          "id": "65084a2d-7819-4b0b-a250-0f48002792b5",
+          "links": {},
+          "metadata": {
+            "description": "The Helmholtz Research Field (RF) Earth and Environment measures and models the properties of the Earth system to understand past and future changes. Thus, it already holds a wealth of data and, in addition, the amount of data is growing rapidly. To",
+            "title": "DataHub-Helmholtz-RF-EE"
+          },
+          "revision_id": 7,
+          "slug": "datahub-helmholtz-rf-ee",
+          "updated": "2026-03-02T13:00:30.041155+00:00"
+        }
+      ],
+      "ids": [
+        "65084a2d-7819-4b0b-a250-0f48002792b5"
+      ]
+    },
+    "id": "arw2q-xfz82",
+    "pids": {}
+  },
+  "pids": {
+    "epic": {
+      "client": "epic",
+      "identifier": "http://hdl.handle.net/21.11157/g2e97-6yw90",
+      "provider": "epic"
+    },
+    "oai": {
+      "identifier": "oai:b2inst.gwdg.de:g2e97-6yw90",
+      "provider": "oai"
+    }
+  },
+  "revision_id": 2,
+  "stats": {
+    "all_versions": {
+      "data_volume": 0.0,
+      "downloads": 0,
+      "unique_downloads": 0,
+      "unique_views": 0,
+      "views": 0
+    },
+    "this_version": {
+      "data_volume": 0.0,
+      "downloads": 0,
+      "unique_downloads": 0,
+      "unique_views": 0,
+      "views": 0
+    }
+  },
+  "status": "published",
+  "updated": "2026-08-31T12:14:13.713727+00:00",
+  "versions": {
+    "index": 1,
+    "is_latest": true
+  }
+}
