@@ -10,7 +10,7 @@ with independent histories and release cycles, while still being easy to orchest
 ## Project Structure
 
 ```orga
-edo/                                    ← umbrella repo  (git@github.com:koubaa-hmc/edo.git)
+edo/                                    ← umbrella repo  (git@github.com:EnergyDataOrchestrator/edo.git)
 ├── core/                               ← submodule: regimo-core
 ├── schema/
 │   └── ontology/                       ← submodule: regimo-ontology
@@ -55,7 +55,7 @@ edo/                                    ← umbrella repo  (git@github.com:kouba
 
 ```bash
 # Clone edo together with all submodules
-git clone --recurse-submodules git@github.com:koubaa-hmc/edo.git
+git clone --recurse-submodules git@github.com:EnergyDataOrchestrator/edo.git
 cd edo
 
 # Already cloned without --recurse-submodules? Populate the submodules:
@@ -183,7 +183,7 @@ directory from its repository and history.
 
 | Action | Command |
 | :--- | :--- |
-| **Clone everything** | `git clone --recurse-submodules git@github.com:koubaa-hmc/edo.git` |
+| **Clone everything** | `git clone --recurse-submodules git@github.com:EnergyDataOrchestrator/edo.git` |
 | **First-time setup / sync to pinned commits** | `git submodule update --init --recursive` |
 | **Show pinned commits and branches** | `git submodule status` |
 | **Update all components to their latest remote `main`** | `git submodule update --remote --merge` |
